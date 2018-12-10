@@ -46,6 +46,7 @@ int main(){
 #endif
 
 		/* Monitor */
+		fprintf(stdout, "%s", "sdasad");
 		monitor(data, nData);
 		fprintf(stdout, "\n");  
 
