@@ -11,6 +11,7 @@
 //#define SENSOR_ADS1256
 
 int main(){
+	fprintf(stdout, "%s", "sdasad");
 	int i = 0;
 	int result = 0;
 
