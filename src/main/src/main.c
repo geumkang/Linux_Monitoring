@@ -19,15 +19,14 @@ int main(){
 	int nData = 3;
 	sensor_data **data = NULL;
 	data = (sensor_data *)malloc(sizeof(sensor_data*) * nData);
-
+	printf("sdadakakakakk");
+	oled_init();
 	for(i = 0 ; i < nData ; i++) {
 		data[i] = sensor_data_init();
 	}
 
 	/* Initialize */
 #ifdef SENSOR_BMP180
-	printf("sdad");
-	oled_init();
 	if(!bmp180_begin()) return 1;
 #endif
 #ifdef SENSOR_ADS1256
