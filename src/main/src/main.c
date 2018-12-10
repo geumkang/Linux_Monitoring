@@ -27,12 +27,12 @@ int main(){
 	/* Initialize */
 #ifdef SENSOR_BMP180
 	if(!bmp180_begin()) return 1;
+	printf("sdad");
+	oled_init();
 #endif
 #ifdef SENSOR_ADS1256
 	if(!ads1256_begin()) return 1;
 #endif
-	printf("sdad");
-	oled_init();
 
 	while(1){
 		/* Sensing */
