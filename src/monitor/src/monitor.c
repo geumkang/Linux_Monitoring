@@ -11,7 +11,7 @@ void monitor(sensor_data **data, int len){
 	}
 }
 
-void oled_init(){
+int oled_init(){
 	if(!bcm2835_init()) return 1;
 	printf("OLED Test Program !!!\n");
 
