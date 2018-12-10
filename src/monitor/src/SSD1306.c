@@ -134,14 +134,13 @@ void SSD1306_char(unsigned char x,unsigned char y,char acsii,char size,char mode
 		else if(size == 32){
 			if(mode)temp=Font3216[11][i];
 			else temp = ~Font3216[11][i];	
-			limit = 16;
 		}
 		else 
 		{			
 			if(mode)temp=Font1608[ch][i];
 			else temp = ~Font1608[ch][i];
 		}
-		for(j =0;j<limit;j++)
+		for(j =0;j<8;j++)
 		{
 			if(temp & 0x80) SSD1306_pixel(x,y,1);
 			else SSD1306_pixel(x,y,0);
