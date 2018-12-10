@@ -13,7 +13,7 @@ DEBUG_OPT  = -DDEBUG
 CFLAGS     = $(DEFINES) $(OPT) 
 LD_OPTS    =
 
-INCLUDES   = -I$(HDR) -I../ -I../../hdr/ -I/util/include -I/util/X11/include
+INCLUDES   = -I$(HDR) -I../ -I../../hdr/ -I/util/include -I/util/X11/include -I/monitor/hdr/
 LIBS       = -lm -lbcm2835
 
 SRCS       = $(SRC)/main.c
