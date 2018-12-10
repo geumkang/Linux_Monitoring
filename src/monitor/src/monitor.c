@@ -3,6 +3,7 @@
 #include <time.h>
 #include "SSD1306.h"
 #include <bcm2835.h>
+#include <string.h>
 
 char value[10]={'0','1','2','3','4','5','6','7','8','9'};
 time_t now;
@@ -41,8 +42,12 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue){
 	SSD1306_string(52, 52, press, 12, 0); 
 	SSD1306_string(98, 52, alti, 12, 0);
 
-	SSD1306_string(0, 16, selectedValue, 100, 0);
-	
+	int i = 0;
+	int pos = 16
+	for(i = 0; i < strlen(selectedValue); i++){
+		SSD1306_char3216(0,pos, selectedValue[i]);	
+		pos += 16;
+	}
 	
 	SSD1306_display();
 }
