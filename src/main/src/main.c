@@ -31,7 +31,7 @@ int main(){
 #ifdef SENSOR_ADS1256
 	if(!ads1256_begin()) return 1;
 #endif
-
+	printf("sdad");
 	oled_init();
 
 	while(1){
