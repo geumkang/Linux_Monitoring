@@ -14,7 +14,7 @@ int main(){
 	fprintf(stdout, "%s", "sdasad");
 	int i = 0;
 	int result = 0;
-
+	oled_end();
 	/* Data Storage Preparation */
 	int nData = 3;
 	sensor_data **data = NULL;
