@@ -131,6 +131,10 @@ void SSD1306_char(unsigned char x,unsigned char y,char acsii,char size,char mode
 			if(mode)temp=Font1206[ch][i];
 			else temp = ~Font1206[ch][i];
 		}
+		else if(size == 32){
+			if(mode)temp=Font3216[11][i];
+			else temp = ~Font3216[11][i];	
+		}
 		else 
 		{			
 			if(mode)temp=Font1608[ch][i];
