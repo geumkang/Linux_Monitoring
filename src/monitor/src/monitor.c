@@ -49,6 +49,10 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue){
 			SSD1306_char(pos, 32, selectedValue[i], 16, 1);
 			pos += 2;
 		}
+		else if(selectedValue[i] == 'C'){
+			SSD1306_char(pos, 16, selectedValue[i], 32, 1);
+			pos += 16;
+		}
 		else{ 
 			SSD1306_char3216(pos, 16, selectedValue[i]);	
 			pos += 16;
