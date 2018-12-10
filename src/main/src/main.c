@@ -70,6 +70,7 @@ int main(){
 	free(data);
 #ifdef SENSOR_BMP180
 	bmp180_end();
+	oled_end();
 #endif
 #ifdef SENSOR_ADS1256
 	ads1256_end();
