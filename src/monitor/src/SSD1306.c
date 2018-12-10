@@ -105,7 +105,7 @@ void SSD1306_char3216(uint8_t x, uint8_t y, uint8_t chChar)
 	uint8_t chTemp = 0, y0 = y, chMode = 0;
 
 	for (i = 0; i < 64; i ++) {
-		if(chChar = 'C') chTemp = Font3216[12 - 0x30][i];
+		if(chChar = 'a') chTemp = Font3216[12 - 0x30][i];
 		else chTemp = Font3216[chChar - 0x30][i];
 		for (j = 0; j < 8; j ++) {
 			chMode = chTemp & 0x80? 1 : 0; 
