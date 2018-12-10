@@ -105,7 +105,8 @@ void SSD1306_char3216(uint8_t x, uint8_t y, uint8_t chChar)
 	uint8_t chTemp = 0, y0 = y, chMode = 0;
 
 	for (i = 0; i < 64; i ++) {
-		chTemp = Font3216[chChar - 0x30][i];
+		if(chChar == 'C') chTemp = Font3216[11][i];
+		else chTemp = Font3216[chChar - 0x30][i];
 		for (j = 0; j < 8; j ++) {
 			chMode = chTemp & 0x80? 1 : 0; 
 			SSD1306_pixel(x, y, chMode);
@@ -130,10 +131,6 @@ void SSD1306_char(unsigned char x,unsigned char y,char acsii,char size,char mode
 		{
 			if(mode)temp=Font1206[ch][i];
 			else temp = ~Font1206[ch][i];
-		}
-		else if(size == 32){
-			if(mode)temp=Font3216[11][i];
-			else temp = ~Font3216[11][i];	
 		}
 		else 
 		{			
