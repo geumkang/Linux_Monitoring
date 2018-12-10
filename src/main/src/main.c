@@ -56,7 +56,6 @@ int main(){
 		sprintf(press, "%s", data[1]->name);
 		sprintf(alti, "%s", data[2]->name);
 		sprintf(currentValue, "%.2f %s", data[0]->value, data[0]->unit);
-		currentValue = replaceAll(currentValue, " ", "");
 		oled_run(temp, press, alti, currentValue);
 		fprintf(stdout, "\n");  
 
