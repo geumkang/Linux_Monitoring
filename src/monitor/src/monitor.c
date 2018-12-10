@@ -43,14 +43,14 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue){
 	SSD1306_string(98, 52, alti, 12, 0);
 
 	int i = 0;
-	int pos = 1;
+	int pos = 16;
 	for(i = 0; i < strlen(selectedValue); i++){
 		if(selectedValue[i] == '.'){
 			SSD1306_char(pos, 32, selectedValue[i], 16, 1);
 			pos += 2;
 		}
 		else if(selectedValue[i] == 'C'){
-			SSD1306_char(pos, 16, selectedValue[i], 32, 1);
+			SSD1306_char(pos, 0, selectedValue[i], 32, 1);
 			pos += 16;
 		}
 		else{ 
