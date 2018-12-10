@@ -14,7 +14,7 @@ CFLAGS     = $(DEFINES) $(OPT)
 LD_OPTS    =
 
 INCLUDES   = -I$(HDR) -I../ -I../../hdr/ -I/util/include -I/util/X11/include
-LIBS       = -lm -lrt
+LIBS       = -lm -lrt -lbcm2835
 
 SRCS       = $(SRC)/monitor.c \
 			 $(SRC)/SSD1306.c
