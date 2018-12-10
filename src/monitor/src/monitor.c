@@ -27,6 +27,7 @@ int oled_init(){
 }
 
 void oled_run(){
+	SSD1306_clear();
 	printf("cleclelce");
 	time(&now);
 	timenow = localtime(&now);
