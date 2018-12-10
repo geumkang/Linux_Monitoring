@@ -10,8 +10,9 @@ void monitor(sensor_data **data, int len){
 		fprintf(stdout, "%s: %0.2f %s\n", data[i]->name, data[i]->value, data[i]->unit);
 	}
 }
+
 void oled_init(){
-	if(!bcm2835_init())return 1;
+	if(!bcm2835_init()) return 1;
 	printf("OLED Test Program !!!\n");
 
 	SSD1306_begin();

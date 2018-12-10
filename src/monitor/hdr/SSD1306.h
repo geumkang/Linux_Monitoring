@@ -1,5 +1,6 @@
 #ifndef _SSD1306_H_
 #define _SSD1306_H_
+#include <stdint.h>
 
 #define SSD1306_SETCONTRAST 0x81
 #define SSD1306_DISPLAYALLON_RESUME 0xA4
