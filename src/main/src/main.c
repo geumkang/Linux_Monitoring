@@ -48,7 +48,6 @@ int main(){
 
 		/* Monitor */
 		monitor(data, nData);
-		fprintf(stdout, "%s", "sdasadasa");
 		char* temp = malloc(40 * sizeof(char));
 		char* press = malloc(40 * sizeof(char));
 		char* alti = malloc(40 * sizeof(char));
@@ -56,7 +55,7 @@ int main(){
 		sprintf(temp, "%s", data[0]->name);
 		sprintf(press, "%s", data[1]->name);
 		sprintf(alti, "%s", data[2]->name);
-		sprintf(currentValue, "%f %s", data[0]->value, data[0]->unit);
+		sprintf(currentValue, "%.2f %s", data[0]->value, data[0]->unit);
 		oled_run(temp, press, alti, currentValue);
 		fprintf(stdout, "\n");  
 
