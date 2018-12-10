@@ -24,11 +24,11 @@ int oled_init(){
 	SSD1306_display();
 	bcm2835_delay(2000);
 	SSD1306_clear();
-	printf("cleclelce");
+	SSD1306_display();
 }
 
 void oled_run(){
-	
+	printf("cleclelce");
 	time(&now);
 	timenow = localtime(&now);
 
