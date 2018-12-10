@@ -19,7 +19,7 @@ int main(){
 	int nData = 3;
 	sensor_data **data = NULL;
 	data = (sensor_data *)malloc(sizeof(sensor_data*) * nData);
-	fprintf(stdout, "sdadakakakakk");
+	fprintf(stdout, "%s", "asdad");
 	//oled_init();
 	for(i = 0 ; i < nData ; i++) {
 		data[i] = sensor_data_init();
