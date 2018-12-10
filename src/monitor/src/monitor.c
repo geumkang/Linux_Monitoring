@@ -24,7 +24,6 @@ int oled_init(){
 	SSD1306_display();
 	bcm2835_delay(2000);
 	SSD1306_clear();
-	SSD1306_display();
 }
 
 void oled_run(){
