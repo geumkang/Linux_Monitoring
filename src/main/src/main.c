@@ -6,6 +6,7 @@
 #include <monitor.h>
 #include <logger.h>
 #include <sensor_data.h>
+#include <SSD1306.h>
 
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
@@ -30,6 +31,8 @@ int main(){
 #ifdef SENSOR_ADS1256
 	if(!ads1256_begin()) return 1;
 #endif
+
+	oled_init();
 
 	while(1){
 		/* Sensing */

@@ -1,13 +1,13 @@
-#include <monitor.h>
+#include <bcm2835.h>
 #include <stdio.h>
+#include <time.h>
+#include "SSD1306.h"
 
-void monitor(sensor_data **data, int len){
-	int i = 0;
-	for(i = 0 ; i < len ; i++) {
-		fprintf(stdout, "%s: %0.2f %s\n", data[i]->name, data[i]->value, data[i]->unit);
-	}
-}
-void oled_init(){
+char value[10]={'0','1','2','3','4','5','6','7','8','9'};
+int main(int argc,char **argv)
+{
+	time_t now;
+	struct tm *timenow;
 	if(!bcm2835_init())return 1;
 	printf("OLED Test Program !!!\n");
 
@@ -16,12 +16,9 @@ void oled_init(){
 	SSD1306_display();
 	bcm2835_delay(2000);
 	SSD1306_clear();
-}
-
-void oled_run(){
-	time_t now;
-	struct tm *timenow;
-	time(&now);
+	while(1)
+	{
+		time(&now);
 		timenow = localtime(&now);
 
 		SSD1306_bitmap(0, 2, Singal816, 16, 8); 
@@ -45,9 +42,9 @@ void oled_run(){
     	SSD1306_char3216(112,16, value[timenow->tm_sec%10]);
     	
 		SSD1306_display();
-}
-
-void oled_end(){
+    }
 	bcm2835_spi_end();
 	bcm2835_close();
+	return 0;
 }
+
