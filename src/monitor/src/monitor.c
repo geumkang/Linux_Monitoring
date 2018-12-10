@@ -45,12 +45,16 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue){
 	int i = 0;
 	int pos = 16;
 	for(i = 0; i < strlen(selectedValue); i++){
-		if(selectedValue[i] == '.')
-			SSD1306_char(pos, 32, selectedValue[i], 16, 1);		
-		else 
+		if(selectedValue[i] == '.'){
+			SSD1306_char(pos, 32, selectedValue[i], 16, 1);
+			pos += 2;
+		}
+		else{ 
 			SSD1306_char3216(pos, 16, selectedValue[i]);	
+			pos += 16;
+		}
 		printf("%c\n", selectedValue[i]);
-		pos += 16;
+		
 	}
 	
 	SSD1306_display();
