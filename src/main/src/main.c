@@ -6,7 +6,6 @@
 #include <monitor.h>
 #include <logger.h>
 #include <sensor_data.h>
-#include <SSD1306.h>
 
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
