@@ -16,9 +16,11 @@ LD_OPTS    =
 INCLUDES   = -I$(HDR) -I../ -I../../hdr/ -I/util/include -I/util/X11/include
 LIBS       = -lm -lrt
 
-SRCS       = $(SRC)/monitor.c
+SRCS       = $(SRC)/monitor.c \
+			 $(SRC)/SSD1306.c
 
-OBJS       = $(OBJ)/monitor.o
+OBJS       = $(OBJ)/monitor.o \
+			 $(OBJ)/SSD1306.o
 
 all: $(OBJS) $(SRCS) Makefile
 	ld $(LD_OPTS) -r -o $(LD_OBJ)/monitor.o $(OBJS)
