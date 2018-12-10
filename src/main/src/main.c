@@ -49,9 +49,15 @@ int main(){
 		/* Monitor */
 		monitor(data, nData);
 		fprintf(stdout, "%s", "sdasadasa");
-		char* str = malloc(40 * sizeof(char));
-		sprintf(str, "%s", data[0]->name);
-		oled_run(str);
+		char* temp = malloc(40 * sizeof(char));
+		char* press = malloc(40 * sizeof(char));
+		char* alti = malloc(40 * sizeof(char));
+		char* currentValue = malloc(40 * sizeof(char));
+		sprintf(temp, "%s", data[0]->name);
+		sprintf(press, "%s", data[1]->name);
+		sprintf(alti, "%s", data[2]->name);
+		sprintf(currentValue, "%f %s", data[0]->value, data[0]->unit);
+		oled_run(temp, press, alti, currentValue);
 		fprintf(stdout, "\n");  
 
 		/* Logging */
