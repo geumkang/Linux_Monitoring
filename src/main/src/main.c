@@ -7,11 +7,11 @@
 #include <logger.h>
 #include <sensor_data.h>
 
+
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
 
 int main(){
-	fprintf(stdout, "%s", "sdasad");
 	int i = 0;
 	int result = 0;
 	oled_init();
@@ -48,7 +48,10 @@ int main(){
 
 		/* Monitor */
 		monitor(data, nData);
-		oled_run();
+		fprintf(stdout, "%s", "sdasadasa");
+		char* str = malloc(40 * sizeof(char));
+		sprintf(str, "%s", data[0]->name);
+		oled_run(str);
 		fprintf(stdout, "\n");  
 
 		/* Logging */

@@ -26,8 +26,7 @@ int oled_init(){
 	SSD1306_clear();
 }
 
-void oled_run(){
-	printf("cleclelce");
+void oled_run(char* data){
 	time(&now);
 	timenow = localtime(&now);
 
@@ -38,7 +37,7 @@ void oled_run(){
 	SSD1306_bitmap(90, 2, Alarm88, 8, 8); 
 	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
 
-	SSD1306_string(0, 52, "MUSIC", 12, 0); 
+	SSD1306_string(0, 52, str, 12, 0); 
 	SSD1306_string(52, 52, "MENU", 12, 0); 
 	SSD1306_string(98, 52, "PHONE", 12, 0);
 
