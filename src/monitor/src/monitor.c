@@ -19,17 +19,14 @@ int oled_init(){
 	if(!bcm2835_init()) return 1;
 	printf("OLED Test Program !!!\n");
 
-	// SSD1306_begin();
-	// SSD1306_bitmap(0,0,waveshare,128,64);
-	// SSD1306_display();
-	// bcm2835_delay(2000);
 	SSD1306_begin();
-	SSD1306_clear();
+	SSD1306_bitmap(0,0,waveshare,128,64);
 	SSD1306_display();
+	bcm2835_delay(2000);
+	SSD1306_clear();
 }
 
 void oled_run(){
-	SSD1306_begin();
 	printf("cleclelce");
 	time(&now);
 	timenow = localtime(&now);

@@ -48,7 +48,7 @@ int main(){
 
 		/* Monitor */
 		monitor(data, nData);
-		void oled_run();
+		oled_run();
 		fprintf(stdout, "\n");  
 
 		/* Logging */
