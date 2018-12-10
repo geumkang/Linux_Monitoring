@@ -26,7 +26,7 @@ int oled_init(){
 	SSD1306_clear();
 }
 
-void oled_run(char* data){
+void oled_run(char* str){
 	time(&now);
 	timenow = localtime(&now);
 
