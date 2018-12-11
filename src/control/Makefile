@@ -22,9 +22,10 @@ OBJS       = $(OBJ)/control.o
 
 all: $(OBJS) $(SRCS) Makefile
 	ld $(LD_OPTS) -r -o $(LD_OBJ)/control.o $(OBJS)
+	cp hdr/*.h ../../hdr/
 
 $(OBJ)/%.o:$(SRC)/%.c
-	${CC} ${CFLAGS} $(INCLUDES) -c $(SRC)/${*F}.c -o $(OBJ)/${*F}.o
+	${CC} ${CFLAGS} $(INCLUDES) -c $(SRC)/${*F}.c -o $(OBJ)/${*F}.o ${LIBS}
 
 clean:
 	-rm -f *.a core $(OBJS)
