@@ -6,6 +6,7 @@
 #include <monitor.h>
 #include <logger.h>
 #include <sensor_data.h>
+#include <control.h>
 #include <string.h>
 
 #define SENSOR_BMP180
@@ -15,6 +16,7 @@ int main(){
 	int i = 0;
 	int result = 0;
 	oled_init();
+	key_init();
 	/* Data Storage Preparation */
 	int nData = 3;
 	sensor_data **data = NULL;
@@ -47,6 +49,7 @@ int main(){
 #endif
 
 		/* Monitor */
+		key_run();
 		monitor(data, nData);
 		char* temp = malloc(40 * sizeof(char));
 		char* press = malloc(40 * sizeof(char));
