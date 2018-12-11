@@ -14,7 +14,7 @@ CFLAGS     = $(DEFINES) $(OPT)
 LD_OPTS    =
 
 INCLUDES   = -I$(HDR) -I../ -I../../hdr/ -I/util/include -I/util/X11/include
-LIBS       = -lm -bcm2835
+LIBS       = -lm -lbcm2835
 
 SRCS       = $(SRC)/control.c
 
