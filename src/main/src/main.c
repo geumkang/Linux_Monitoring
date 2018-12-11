@@ -15,6 +15,7 @@
 int main(){
 	int i = 0;
 	int result = 0;
+	int menu = 0;
 	oled_init();
 	key_init();
 	/* Data Storage Preparation */
@@ -49,7 +50,10 @@ int main(){
 #endif
 
 		/* Monitor */
-		key_run();
+		if(key_run() == 1){
+			menu = (menu+1) % 3;
+		}
+
 		monitor(data, nData);
 		char* temp = malloc(40 * sizeof(char));
 		char* press = malloc(40 * sizeof(char));
@@ -58,7 +62,7 @@ int main(){
 		sprintf(temp, "%s", data[0]->name);
 		sprintf(press, "%s", data[1]->name);
 		sprintf(alti, "%s", data[2]->name);
-		sprintf(currentValue, "%.2f %s", data[0]->value, data[0]->unit);
+		sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
 		oled_run(temp, press, alti, currentValue);
 		fprintf(stdout, "\n");  
 
