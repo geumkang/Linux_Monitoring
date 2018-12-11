@@ -60,9 +60,7 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		else{ 
 			SSD1306_char3216(pos, 16, selectedValue[i]);	
 			pos += 16;
-		}
-		printf("%c\n", selectedValue[i]);
-		
+		}		
 	}
 	
 	SSD1306_display();
