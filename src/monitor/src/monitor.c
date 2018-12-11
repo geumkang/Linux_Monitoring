@@ -41,7 +41,7 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
 
 	SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
-	SSD1306_string(48, 52, press, 12, selectedMenu[1]); 
+	SSD1306_string(46, 52, press, 12, selectedMenu[1]); 
 	SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
 
 	int i = 0;
