@@ -47,7 +47,7 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	int i = 0;
 	int pos = 0;
 	int size;
-	if(strlen(selectedValue) > 9) size = 9;
+	if(strlen(selectedValue) > 10) size = 10;
 	else size = strlen(selectedValue);
 	for(i = 0; i < size; i++){
 		if(selectedValue[i] == '.'){
