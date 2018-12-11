@@ -2,6 +2,6 @@
 #define __CONTROL_H__
 
 int key_init();
-void key_run();
+int key_run();
 void key_end();
 #endif
