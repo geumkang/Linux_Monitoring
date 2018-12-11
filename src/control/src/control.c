@@ -18,11 +18,10 @@ int key_run(){
 	if(bcm2835_gpio_lev(PRESSKEY) == 0)
 	{  
 		printf ("KEY PRESS\n") ;
-		while(bcm2835_gpio_lev(PRESSKEY) == 0)
-			bcm2835_delay(100);
+		// while(bcm2835_gpio_lev(PRESSKEY) == 0)
+		// 	bcm2835_delay(100);
 		return 1;
 	}
-	bcm2835_delay(100);
 	return 0;
 }
 
