@@ -63,7 +63,7 @@ int main(){
 		sprintf(temp, "%s", data[0]->name);
 		sprintf(press, "%s", data[1]->name);
 		sprintf(alti, "%s", data[2]->name);
-		sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
+		sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit, menu);
 		oled_run(temp, press, alti, currentValue);
 		fprintf(stdout, "\n");  
 
