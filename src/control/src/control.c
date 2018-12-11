@@ -7,8 +7,8 @@ unsigned char i;
 
 int key_init(){
 	if (!bcm2835_init())return 1;
-	bcm2835_gpio_fsel(KEY, BCM2835_GPIO_FSEL_INPT);
-	bcm2835_gpio_set_pud(KEY, BCM2835_GPIO_PUD_UP);
+	bcm2835_gpio_fsel(PRESSKEY, BCM2835_GPIO_FSEL_INPT);
+	bcm2835_gpio_set_pud(PRESSKEY, BCM2835_GPIO_PUD_UP);
 	printf("Key Test Program!!!!\n");	
 	
 }
