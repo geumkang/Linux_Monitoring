@@ -27,7 +27,9 @@ int oled_init(){
 	SSD1306_clear();
 }
 
-void oled_run(char* temp, char* press, char* alti, char* selectedValue){
+void oled_run(char* temp, char* press, char* alti, char* selectedValue, menu){
+	int selectedMenu[3] = {1,1,1};
+	selectedMenu[menu] = 0;
 	time(&now);
 	timenow = localtime(&now);
 
@@ -38,9 +40,9 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue){
 	SSD1306_bitmap(90, 2, Alarm88, 8, 8); 
 	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
 
-	SSD1306_string(0, 52, temp, 12, 0); 
-	SSD1306_string(52, 52, press, 12, 0); 
-	SSD1306_string(98, 52, alti, 12, 0);
+	SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
+	SSD1306_string(48, 52, press, 12, selectedMenu[1]); 
+	SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
 
 	int i = 0;
 	int pos = 0;
