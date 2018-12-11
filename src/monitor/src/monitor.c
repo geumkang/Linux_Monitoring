@@ -47,16 +47,12 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	int i = 0;
 	int pos = 0;
 	int size;
-	if(strlen(selectedValue) > 7) size = 7;
+	if(strlen(selectedValue) > 9) size = 9;
 	else size = strlen(selectedValue);
 	for(i = 0; i < size; i++){
 		if(selectedValue[i] == '.'){
 			SSD1306_char(pos, 32, selectedValue[i], 16, 1);
 			pos += 2;
-		}
-		else if(selectedValue[i] == 'C'){
-			SSD1306_char3216(pos, 16, selectedValue[i]);
-			pos += 16;
 		}
 		else if(selectedValue[i] == ' '){
 
