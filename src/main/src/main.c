@@ -52,6 +52,7 @@ int main(){
 		/* Monitor */
 		if(key_run() == 1){
 			menu = (menu+1) % 3;
+			printf("%d ~~~", menu);
 		}
 
 		monitor(data, nData);
