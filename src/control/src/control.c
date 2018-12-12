@@ -42,6 +42,7 @@ int key_run(){
 	// }
 
 	// else 
+	printf("2414\n");
 	if(value != 0xFF)
 	{
 		if (!bcm2835_init())return 1;  
