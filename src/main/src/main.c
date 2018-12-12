@@ -50,8 +50,8 @@ int main(){
 		}
 #endif
 		/* Control */
-		menu = checkControl(menu);
-
+		//menu = checkControl(menu);
+		menu = key_run();
 		/* Monitor */
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
