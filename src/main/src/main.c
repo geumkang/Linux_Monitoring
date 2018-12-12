@@ -66,7 +66,7 @@ int main(){
 
 		/* Timer */
 		bsp_DelayUS(100000);
-		bcm2835_delay(500);
+		bcm2835_delay(200);
 	}
 
 	/* Clean-up */
