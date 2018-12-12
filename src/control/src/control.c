@@ -45,10 +45,10 @@ int key_run(){
 	printf("2414\n");
 	if(value != 0xFF)
 	{
-		if (!bcm2835_init())return 1;  
-		bcm2835_i2c_begin(); 
-		bcm2835_i2c_setSlaveAddress(0x20);  
-	    bcm2835_i2c_set_baudrate(10000);  
+		// if (!bcm2835_init())return 1;  
+		// bcm2835_i2c_begin(); 
+		// bcm2835_i2c_setSlaveAddress(0x20);  
+	 //    bcm2835_i2c_set_baudrate(10000);  
 		switch(value)
 		{	
 			case 0xFE:
@@ -69,7 +69,7 @@ int key_run(){
 		// 	bcm2835_delay(10);
 		// }
 		printf("13\n");
-		bcm2835_i2c_end();  
+		//bcm2835_i2c_end();  
 		printf("1414\n");
 	}
 	return 0;
