@@ -43,66 +43,32 @@ int key_run(){
 		// 	bcm2835_delay(10);
 		return 1;
 	}
-	bcm2835_i2c_begin(); 
+
+	else if(value != 0xFF)
+	{
+		bcm2835_i2c_begin(); 
 		bcm2835_i2c_setSlaveAddress(0x20);  
 	    bcm2835_i2c_set_baudrate(10000);  
-	while(1)  
-    {  
-
-		i2c_writeByte(0x0F | i2c_readByte());
-		value = i2c_readByte() | 0xF0;
-		printf("%c\n", value);
-		if(value != 0xFF)
-		{
-			led_on;
-			switch(value)
-			{	
-				case 0xFE:
-					printf("left\n");break;	
-				case 0xFD:
-					printf("up\n");	break;
-				case 0xFB:
-					printf("dowm\n");break;	
-				case 0xF7:
-					printf("right\n");break;
-				default :
-					printf("unknow\n");
-			}
-			while(value != 0xFF)
-			{
-				i2c_writeByte(0x0F | i2c_readByte());
-				value = i2c_readByte() | 0xF0;
-				bcm2835_delay(10);
-			}
-			led_off;
+		switch(value)
+		{	
+			case 0xFE:
+				printf("left\n");break;	
+			case 0xFD:
+				printf("up\n");	break;
+			case 0xFB:
+				printf("dowm\n");break;	
+			case 0xF7:
+				printf("right\n");break;
+			default :
+				printf("unknow\n");
 		}
-		bcm2835_delay(10);	
-	}    
-
-	// else if(value != 0xFF)
-	// {
-	// 	led_on;
-	// 	switch(value)
-	// 	{	
-	// 		case 0xFE:
-	// 			printf("left\n");break;	
-	// 		case 0xFD:
-	// 			printf("up\n");	break;
-	// 		case 0xFB:
-	// 			printf("dowm\n");break;	
-	// 		case 0xF7:
-	// 			printf("right\n");break;
-	// 		default :
-	// 			printf("unknow\n");
-	// 	}
-	// 	led_off;
-	// 	// while(value != 0xFF)
-	// 	// {
-	// 	// 	i2c_writeByte(0x0F | i2c_readByte());
-	// 	// 	value = i2c_readByte() | 0xF0;
-	// 	// 	bcm2835_delay(10);
-	// 	// }
-	// }
+		// while(value != 0xFF)
+		// {
+		// 	i2c_writeByte(0x0F | i2c_readByte());
+		// 	value = i2c_readByte() | 0xF0;
+		// 	bcm2835_delay(10);
+		// }
+	}
 	return 0;
 }
 
