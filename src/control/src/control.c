@@ -30,6 +30,7 @@ int key_run(){
 	// else 
 		if(value != 0xFF)
 		{
+			printf("21312\n");
 			switch(value)
 			{	
 				case 0xFE:
