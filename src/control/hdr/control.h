@@ -7,7 +7,7 @@
 int key_init();
 int key_run();
 void key_end();
-int checkControl(int menu);
+void checkControl(int *menu, int *key);
 
 int* getView();
 void i2c_writeByte(char byte);

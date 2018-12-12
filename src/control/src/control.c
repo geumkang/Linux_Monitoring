@@ -75,8 +75,8 @@ void key_end(){
 	bcm2835_close();
 }
 
-int checkControl(int menu){
-	int key = key_run();
+void checkControl(int *menu, int *key){
+	key = key_run();
 	if(key == 1){
 		SELECTED_VIEW = (SELECTED_VIEW+1) % 3;
 	}
@@ -89,18 +89,11 @@ int checkControl(int menu){
 		printf("%d ~~~", menu);
 	}
 	else if(key == 4){		// up
-		if(SELECTED_VIEW != 0)
-			return UP;
-		else
-			return menu;
+		
 	}
 	else if(key == 5){		// down
-		if(SELECTED_VIEW != 0)
-			return DOWN;
-		else
-			return menu;
+		
 	}
-	return menu;
 }
 
 int* getView(){

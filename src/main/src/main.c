@@ -16,7 +16,7 @@ int main(){
 	int *view = NULL;
 	int i = 0;
 	int result = 0;
-	int menu = 0, currentUnit = 0;
+	int menu = 0, key = 0, currentUnit = 0;
 	oled_init();
 	key_init();
 	view = getView();
@@ -55,12 +55,11 @@ int main(){
 		printf("%d\n", *view);
 		
 		/* Control */
-		menu = checkControl(menu);
+		checkControl(&menu, &key);
 		printf("%d\n", menu);
 		/* Monitor */
 		monitor(data, nData);
 
-		if(menu > 3) currentUnit = menu;
 		// if(*view != 0){
 		// 	sprintf(currentValue, "%s", data[currentUnit]->unit);
 		// }
@@ -70,7 +69,7 @@ int main(){
 		// }
 		oled_run(data, menu, *view);
 		fprintf(stdout, "\n");  
-		menu = currentUnit;
+		
 
 		/* Logging */
 		result = logging("data/data_corpus.dat", data, nData);
