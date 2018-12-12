@@ -32,7 +32,7 @@ int oled_init(){
 void oled_run(sensor_data* data, int menu, int view){
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
-	if(*view != 0){
+	if(view != 0)
 		sprintf(selectedValue, "%s", data[menu].unit);
 	else{
 		sprintf(selectedValue, "%.2f %s", data[menu].value, data[menu].unit);
