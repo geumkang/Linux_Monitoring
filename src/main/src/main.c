@@ -62,7 +62,7 @@ int main(){
 		
 		/* Check */
 		notice = checkValue(data, *view);
-		noticeWarning(notice);
+		if(*view == 0) noticeWarning(notice);
 
 		/* Timer */
 		bsp_DelayUS(100000);
