@@ -50,7 +50,7 @@ int main(){
 			sensor_data_set(data[i], "???", SENSOR_DATA_TYPE_DOUBLE, ADS1256_GetAdc(i) /1670.0, "mV");
 		}
 #endif
-		printf("%d\n", DISPLAY);
+		printf("%d\n", SELECTED_VIEW);
 		/* Control */
 		menu = checkControl(menu);
 		/* Monitor */
