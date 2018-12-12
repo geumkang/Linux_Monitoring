@@ -76,7 +76,7 @@ void key_end(){
 }
 
 void checkControl(int *menu, int *key){
-	*key = *key_run();
+	*key = key_run();
 	if(*key == 1){
 		SELECTED_VIEW = (SELECTED_VIEW+1) % 3;
 	}
