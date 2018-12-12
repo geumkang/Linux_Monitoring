@@ -46,9 +46,7 @@ int key_run(){
 	// else 
 	bcm2835_i2c_setSlaveAddress(0x20);  
     bcm2835_i2c_set_baudrate(10000);  
-    bcm2835_i2c_setSlaveAddress(0x20);  
-    bcm2835_i2c_set_baudrate(10000);  
-	while(1){
+	bcm2835_delay(100);
 	i2c_writeByte(0x0F | i2c_readByte());
 	value = i2c_readByte() | 0xF0;
 	if(value != 0xFF)
@@ -80,7 +78,7 @@ int key_run(){
 		//bcm2835_i2c_end();  
 		
 	}
-}
+
 	return 0;
 }
 
