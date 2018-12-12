@@ -64,7 +64,7 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		sprintf(Description, "%s", "Min Value");
 		SSD1306_string(0, 16, Description, 12, 1);
 		char* min = malloc(40 * sizeof(char));
-		sprintf(min, "%d%s", minValue, currentValue);
+		sprintf(min, "%d%s", minValue, selectedValue);
 		displayValue(min, 12);
 	}
 	
