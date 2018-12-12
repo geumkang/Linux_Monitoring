@@ -46,9 +46,10 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
 		SSD1306_string(46, 52, press, 12, selectedMenu[1]); 
 		SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
-		displayValue(selectedValue);
+		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
+		printf("%s %d\n", "버튼 : ", menu);
 		if(minValue == 0){
 			if(menu == 0)
 				minValue = 35;
@@ -64,7 +65,7 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		SSD1306_string(0, 16, Description, 12, 1);
 		char* min = malloc(40 * sizeof(char));
 		sprintf(min, "%d", minValue);
-		displayValue(min);
+		displayValue(min, 12);
 	}
 	
 	SSD1306_display();
@@ -75,7 +76,7 @@ void oled_end(){
 	bcm2835_close();
 }
 
-void displayValue(char* selectedValue){
+void displayValue(char* selectedValue, int addY){
 	int i = 0;
 	int pos = 0;
 	int size;
@@ -83,14 +84,14 @@ void displayValue(char* selectedValue){
 	else size = strlen(selectedValue);
 	for(i = 0; i < size; i++){
 		if(selectedValue[i] == '.'){
-			SSD1306_char(pos, 32, selectedValue[i], 16, 1);
+			SSD1306_char(pos, 32 + addY, selectedValue[i], 16, 1);
 			pos += 2;
 		}
 		else if(selectedValue[i] == ' '){
 
 		}
 		else{ 
-			SSD1306_char3216(pos, 16, selectedValue[i]);	
+			SSD1306_char3216(pos, 16 + addY, selectedValue[i]);	
 			pos += 16;
 		}		
 	}
