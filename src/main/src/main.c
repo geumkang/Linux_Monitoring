@@ -15,10 +15,8 @@
 int main(){
 	int *view = NULL;
 	int i = 0;
-	int result = 0;
-	int menu = 0;
-	int key = 0;
-	int currentUnit = 0;
+	int menu = 0, key = 0;
+	int notice = 0;
 	oled_init();
 	key_init();
 	view = getView();
@@ -62,12 +60,9 @@ int main(){
 		oled_run(data, menu, key, *view);
 		fprintf(stdout, "\n");  
 		
-		/* Logging */
-		result = logging("data/data_corpus.dat", data, nData);
-		if(result) {
-			fprintf(stderr, "File is not written.\n");
-			return 1;
-		}
+		/* Check */
+		notice = checkValue(data, *view);
+
 		/* Timer */
 		bsp_DelayUS(100000);
 		bcm2835_delay(500);

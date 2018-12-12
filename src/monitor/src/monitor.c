@@ -5,6 +5,7 @@
 #include <bcm2835.h>
 #include <string.h>
 #include <sensor_data.h>
+
 #define UP 4
 #define DOWN 5
 
@@ -29,6 +30,7 @@ int oled_init(){
 	bcm2835_delay(2000);
 	SSD1306_clear();
 }
+
 void oled_run(sensor_data** data, int menu, int key, int view){
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
@@ -91,7 +93,6 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		
 		displayValue(max, 12);
 	}
-	
 	SSD1306_display();
 }
 
@@ -118,6 +119,18 @@ void displayValue(char* selectedValue, int addY){
 			SSD1306_char3216(pos, 16 + addY, selectedValue[i]);	
 			pos += 16;
 		}		
+	}
+}
+
+int checkValue(sensor_data** data, int view){
+	if(view == 0){
+		for(int i = 0; i < 3; i++){
+			if(minValue[i] != 0){
+				if(data[i]->value < minValue[i] || data[i]->value > maxValue[i]){
+					return 1;	
+				}
+			}
+		}
 	}
 }
 

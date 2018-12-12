@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include<bcm2835.h>
 
+#define beep_on  i2c_writeByte(0x7F & i2c_readByte())
+#define beep_off i2c_writeByte(0x80 | i2c_readByte())
 #define led_off   i2c_writeByte(0x10 | i2c_readByte())
 #define led_on  i2c_writeByte(0xEF & i2c_readByte())
 
@@ -93,6 +95,17 @@ void checkControl(int *menu, int *key){
 	}
 	else if(*key == 5){		// down
 		
+	}
+}
+
+void noticeWarning(int beef){
+	if(beef == 1){
+		bcm2835_i2c_setSlaveAddress(0x20);  
+	    bcm2835_i2c_set_baudrate(10000);  
+		bcm2835_delay(100);
+		led_on;
+		bcm2835_i2c_setSlaveAddress(0x77);  
+    	bcm2835_i2c_set_baudrate(10000);
 	}
 }
 
