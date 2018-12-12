@@ -20,7 +20,7 @@ int main(){
 	int menu = 0;
 	oled_init();
 	key_init();
-	getView(view);
+	getView(*view);
 	/* Data Storage Preparation */
 	int nData = 3;
 	sensor_data **data = NULL;
