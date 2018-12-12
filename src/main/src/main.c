@@ -68,7 +68,7 @@ int main(){
 			sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
 			currentUnit = menu;
 		}
-		oled_run(data, menu, *view);
+		oled_run(*data, menu, *view);
 		//oled_run(data[0]->name, data[1]->name, data[2]->name, currentValue, menu, *view);
 		fprintf(stdout, "\n");  
 		menu = currentUnit;
