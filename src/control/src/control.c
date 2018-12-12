@@ -60,14 +60,12 @@ int key_run(){
 				default :
 					printf("unknow\n");
 			}
-			// while(value != 0xFF)
-			// {
-			// 	i2c_writeByte(0x0F | i2c_readByte());
-			// 	value = i2c_readByte() | 0xF0;
-			// 	bcm2835_delay(10);
-			// }
-			
-			//bcm2835_i2c_end();  
+			while(value != 0xFF)
+			{
+				i2c_writeByte(0x0F | i2c_readByte());
+				value = i2c_readByte() | 0xF0;
+				bcm2835_delay(10);
+			}
 		}
 		bcm2835_i2c_setSlaveAddress(0x77);  
     	bcm2835_i2c_set_baudrate(10000);  		
