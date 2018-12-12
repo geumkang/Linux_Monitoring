@@ -79,7 +79,7 @@ int checkControl(int menu){
 		menu = (menu+2) % 3;
 		printf("%d ~~~", menu);
 	}	
-	if(key_run() == 5){
+	else if(key_run() == 5){
 		menu = (menu+1) % 3;
 		printf("%d ~~~", menu);
 	}	
