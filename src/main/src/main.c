@@ -14,6 +14,7 @@
 
 int main(){
 	int *view = NULL;
+	view = malloc(sizeof(int*) * 10);
 	int i = 0;
 	int result = 0;
 	int menu = 0;
