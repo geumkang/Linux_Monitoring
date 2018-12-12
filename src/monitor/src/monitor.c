@@ -70,14 +70,14 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		printf("%s %d\n", "버튼 : ", menu);
 		if(maxValue == 0){
 			if(menu == 0)
-				maxValue = 35;
+				maxValue = minValue + 1;
 			else if(menu == 1)
-				maxValue = 1016;
+				maxValue = minValue + 1;
 			else if(menu == 2)
-				maxValue = 15;
+				maxValue = minValue + 1;
 		}
 		if(menu == UP) maxValue++;
-		else if(menu == DOWN) maxValue--;
+		else if(menu == DOWN && maxValue >= minValue + 1) maxValue--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Max Value");
 		sprintf(max, "%d%s", maxValue, selectedValue);
