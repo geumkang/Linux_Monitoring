@@ -9,7 +9,7 @@ int logging(char *path, sensor_data **data, int len) {
 	FILE *file = fopen(path, "a");
 	time(&now);
 	timenow = localtime(&now);
-	fprintf(file, "%d-%d-%d ",timenow->tm_hour, timenow->tm_min, timenow->tm_sec);
+	fprintf(file, "%d:%d:%d ",timenow->tm_hour, timenow->tm_min, timenow->tm_sec);
 	for(i = 0 ; i < len ; i++) {
 		fprintf(file, "%.2f", data[i]->value);
 		if(i < len-1) fprintf(file, ",");
