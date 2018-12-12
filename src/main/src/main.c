@@ -61,7 +61,7 @@ int main(){
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
 		
-		if(*view != 0 && (menu == UP || menu == DOWN)){
+		if(*view != 0){
 			sprintf(currentValue, "%s", data[currentUnit]->unit);
 		}
 		else{
