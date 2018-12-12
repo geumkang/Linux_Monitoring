@@ -12,8 +12,6 @@
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
 
-static int DISPLAY = 0;
-
 int main(){
 	int i = 0;
 	int result = 0;
@@ -52,9 +50,9 @@ int main(){
 			sensor_data_set(data[i], "???", SENSOR_DATA_TYPE_DOUBLE, ADS1256_GetAdc(i) /1670.0, "mV");
 		}
 #endif
+		printf("%d\n", DISPLAY);
 		/* Control */
 		menu = checkControl(menu);
-
 		/* Monitor */
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
