@@ -35,7 +35,8 @@ int main(){
 #endif
 
 	while(1){
-		
+		bcm2835_i2c_setSlaveAddress(0x77);  
+    	bcm2835_i2c_set_baudrate(10000);
 		/* Sensing */
 #ifdef SENSOR_BMP180
 		sensor_data_set(data[0], "temp", SENSOR_DATA_TYPE_DOUBLE, read_temperature(), "C");
