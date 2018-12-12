@@ -5,8 +5,8 @@
 #include <bcm2835.h>
 #include <string.h>
 #include <sensor_data.h>
-#define UP 100
-#define DOWN 200
+#define UP 4
+#define DOWN 5
 
 char value[10]={'0','1','2','3','4','5','6','7','8','9'};
 int minValue = 0;
@@ -58,11 +58,11 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	else if(view == 1){
 		printf("%s %d\n", "버튼 : ", key);
 		if(minValue == 0){
-			if(key == 0)
+			if(menu == 0)
 				minValue = 35;
-			else if(key == 1)
+			else if(menu == 1)
 				minValue = 1016;
-			else if(key == 2)
+			else if(menu == 2)
 				minValue = 15;
 		}
 		if(key == UP) minValue++;
@@ -75,13 +75,13 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(min, 12);
 	}
 	else if(view == 2){
-		printf("%s %d\n", "버튼 : ", key);
+		printf("%s %d\n", "버튼 : ", menu);
 		if(maxValue == 0){
-			if(key == 0)
+			if(menu == 0)
 				maxValue = minValue + 1;
-			else if(key == 1)
+			else if(menu == 1)
 				maxValue = minValue + 1;
-			else if(key == 2)
+			else if(menu == 2)
 				maxValue = minValue + 1;
 		}
 		if(key == UP) maxValue++;

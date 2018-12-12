@@ -1,8 +1,8 @@
 #ifndef __CONTROL_H__
 #define __CONTROL_H__
 
-#define UP 100
-#define DOWN 200
+#define UP 4
+#define DOWN 5
 
 int key_init();
 int key_run();
