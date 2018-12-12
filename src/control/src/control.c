@@ -20,14 +20,14 @@ int key_init(){
 
 int key_run(){
 
-	if(bcm2835_gpio_lev(PRESSKEY) == 0)
-	{  
-		printf ("KEY PRESS\n") ;
-		// while(bcm2835_gpio_lev(PRESSKEY) == 0)
-		// 	bcm2835_delay(10);
-		return 1;
-	}
-	else{
+	// if(bcm2835_gpio_lev(PRESSKEY) == 0)
+	// {  
+	// 	printf ("KEY PRESS\n") ;
+	// 	// while(bcm2835_gpio_lev(PRESSKEY) == 0)
+	// 	// 	bcm2835_delay(10);
+	// 	return 1;
+	// }
+	{
 		char value;
 		i2c_writeByte(0x0F | i2c_readByte());
 		value = i2c_readByte() | 0xF0;
