@@ -75,6 +75,10 @@ void key_end(){
 }
 
 int checkControl(int menu){
+	if(key_run() == 2){
+		menu = (menu+1) % 3;
+		printf("%d ~~~", menu);
+	}	
 	if(key_run() == 5){
 		menu = (menu+1) % 3;
 		printf("%d ~~~", menu);
