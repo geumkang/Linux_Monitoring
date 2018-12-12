@@ -53,13 +53,15 @@ int main(){
 		}
 #endif
 		printf("%d\n", *view);
+		
 		/* Control */
 		menu = checkControl(menu);
+		
 		/* Monitor */
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
 		sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
-		oled_run(data[0]->name, data[1]->name, data[2]->name, currentValue, menu);
+		oled_run(data[0]->name, data[1]->name, data[2]->name, currentValue, menu, view);
 		fprintf(stdout, "\n");  
 
 		/* Logging */
