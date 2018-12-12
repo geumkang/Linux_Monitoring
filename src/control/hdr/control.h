@@ -1,7 +1,7 @@
 #ifndef __CONTROL_H__
 #define __CONTROL_H__
 
-int SELECTED_VIEW = 0;
+static int SELECTED_VIEW = 0;
 
 int key_init();
 int key_run();
