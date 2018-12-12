@@ -89,3 +89,7 @@ int checkControl(int menu){
 	}	
 	return menu;
 }
+
+void getView(int* view){
+	view = &SELECTED_VIEW;
+}

@@ -13,11 +13,13 @@
 //#define SENSOR_ADS1256
 
 int main(){
+	int* view;
 	int i = 0;
 	int result = 0;
 	int menu = 0;
 	oled_init();
 	key_init();
+	getView(view);
 	/* Data Storage Preparation */
 	int nData = 3;
 	sensor_data **data = NULL;
@@ -50,7 +52,7 @@ int main(){
 			sensor_data_set(data[i], "???", SENSOR_DATA_TYPE_DOUBLE, ADS1256_GetAdc(i) /1670.0, "mV");
 		}
 #endif
-		printf("%d\n", SELECTED_VIEW);
+		printf("%d\n", *view);
 		/* Control */
 		menu = checkControl(menu);
 		/* Monitor */
