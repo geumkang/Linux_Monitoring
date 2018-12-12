@@ -44,9 +44,9 @@ int key_run(){
 	// }
 
 	// else 
+	while(1){
 	i2c_writeByte(0x0F | i2c_readByte());
 	value = i2c_readByte() | 0xF0;
-	printf("2414\n");
 	if(value != 0xFF)
 	{
 		// if (!bcm2835_init())return 1;  
@@ -72,10 +72,11 @@ int key_run(){
 		// 	value = i2c_readByte() | 0xF0;
 		// 	bcm2835_delay(10);
 		// }
-		printf("13\n");
+		
 		//bcm2835_i2c_end();  
-		printf("1414\n");
+		
 	}
+}
 	return 0;
 }
 
