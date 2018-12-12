@@ -60,9 +60,9 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 			if(menu == 0)
 				minValue[menu] = (int)(data[0]->value);
 			else if(menu == 1)
-				minValue[menu] = 1016;
+				minValue[menu] = (int)(data[1]->value);
 			else if(menu == 2)
-				minValue[menu] = 15;
+				minValue[menu] = (int)(data[2]->value);
 		}
 		if(key == UP) minValue[menu]++;
 		else if(key == DOWN) minValue[menu]--;
