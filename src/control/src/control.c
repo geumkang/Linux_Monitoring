@@ -76,9 +76,9 @@ int key_run(){
 		// }
 		
 		//bcm2835_i2c_end();  
-		
 	}
-
+	bcm2835_i2c_setSlaveAddress(0x77);  
+    bcm2835_i2c_set_baudrate(10000);  		
 	return 0;
 }
 
