@@ -22,7 +22,7 @@ char i2c_readByte()
 }
 
 int key_init(){
-	if (!bcm2835_init())return 1;
+	if (!bcm2835_init()) return 1;
 	bcm2835_gpio_fsel(PRESSKEY, BCM2835_GPIO_FSEL_INPT);
 	bcm2835_gpio_set_pud(PRESSKEY, BCM2835_GPIO_PUD_UP);
 	bcm2835_i2c_setSlaveAddress(0x20);  
@@ -91,6 +91,6 @@ int checkControl(int menu){
 	return menu;
 }
 
-void getView(int* view){
-	view = &SELECTED_VIEW;
+int* getView(){
+	return &SELECTED_VIEW;
 }
