@@ -56,7 +56,7 @@ int main(){
 		
 		/* Control */
 		menu = checkControl(menu);
-		
+		printf("%d\n", menu);
 		/* Monitor */
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
