@@ -16,10 +16,10 @@ int key_init(){
 }
 
 int key_run(){
-	char value;
+	char value = '0';
 	i2c_writeByte(0x0F | i2c_readByte());
 	value = i2c_readByte() | 0xF0;
-	printf("%c\n", value);
+	printf("%c\n", i2c_readByte());
 	if(bcm2835_gpio_lev(PRESSKEY) == 0)
 	{  
 		printf ("KEY PRESS\n") ;
