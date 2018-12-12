@@ -12,14 +12,13 @@ int key_init(){
 	if (!bcm2835_init())return 1;
 	bcm2835_gpio_fsel(PRESSKEY, BCM2835_GPIO_FSEL_INPT);
 	bcm2835_gpio_set_pud(PRESSKEY, BCM2835_GPIO_PUD_UP);
-	
+	bcm2835_i2c_setSlaveAddress(0x20);  
+    bcm2835_i2c_set_baudrate(10000);  
 	printf("Key Test Program!!!!\n");	
 	
 }
 
 int key_run(){
-	bcm2835_i2c_setSlaveAddress(0x20);  
-    bcm2835_i2c_set_baudrate(10000);  
 	char value;
 	i2c_writeByte(0x0F | i2c_readByte());
 	value = i2c_readByte() | 0xF0;
