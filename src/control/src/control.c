@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include<bcm2835.h>
 
+#define led_off   i2c_writeByte(0x10 | i2c_readByte())
+#define led_on  i2c_writeByte(0xEF & i2c_readByte())
+
 char PRESSKEY = 20;
 unsigned char i;
 
@@ -31,6 +34,7 @@ int key_run(){
 	else 
 		if(value != 0xFF)
 		{
+			led_on;
 			switch(value)
 			{	
 				case 0xFE:
@@ -44,6 +48,7 @@ int key_run(){
 				default :
 					printf("unknow\n");
 			}
+			led_off;
 			// while(value != 0xFF)
 			// {
 			// 	i2c_writeByte(0x0F | i2c_readByte());
