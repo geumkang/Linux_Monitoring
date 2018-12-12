@@ -5,9 +5,12 @@
 #include <bcm2835.h>
 #include <string.h>
 
+#define UP 100
+#define DOWN 200
+
 char value[10]={'0','1','2','3','4','5','6','7','8','9'};
-time_t now;
-struct tm *timenow;
+int minValue = 0;
+int maxValue = 0;
 
 void monitor(sensor_data **data, int len){
 	int i = 0;
@@ -31,8 +34,6 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	printf("%d~~\n", view);
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;
-	time(&now);
-	timenow = localtime(&now);
 
 	SSD1306_bitmap(0, 2, Singal816, 16, 8); 
 	SSD1306_bitmap(24, 2,Bluetooth88, 8, 8); 
@@ -40,11 +41,37 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	SSD1306_bitmap(64, 2, GPRS88, 8, 8); 
 	SSD1306_bitmap(90, 2, Alarm88, 8, 8); 
 	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
+	
+	if(view == 0){
+		SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
+		SSD1306_string(46, 52, press, 12, selectedMenu[1]); 
+		SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
+		displayValue(selectedValue);
+	}
+	else if(view == 1){
+		if(minValue == 0){
+			if(menu == 0)
+				minValue = 35;
+			else if(menu == 1)
+				minValue = 1016;
+			else if(menu == 2)
+				minValue = 15;
+		}
+		if(menu == UP) minValue++;
+		else if(menu == DOWN) minValue--;
+		SSD1306_string(0, 16, "min value", 12, 1);
+		displayValue(minValue);
+	}
+	
+	SSD1306_display();
+}
 
-	SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
-	SSD1306_string(46, 52, press, 12, selectedMenu[1]); 
-	SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
+void oled_end(){
+	bcm2835_spi_end();
+	bcm2835_close();
+}
 
+void displayValue(char* selectedValue){
 	int i = 0;
 	int pos = 0;
 	int size;
@@ -63,11 +90,12 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 			pos += 16;
 		}		
 	}
-	
-	SSD1306_display();
 }
 
-void oled_end(){
-	bcm2835_spi_end();
-	bcm2835_close();
+int* getMinValue(){
+	return &minValue;
+}
+
+int* getMaxValue(){
+	return &maxValue;
 }

@@ -4,6 +4,8 @@
 
 #define led_off   i2c_writeByte(0x10 | i2c_readByte())
 #define led_on  i2c_writeByte(0xEF & i2c_readByte())
+#define UP 100
+#define DOWN 200
 
 int SELECTED_VIEW = 0;
 char PRESSKEY = 20;
@@ -51,14 +53,14 @@ int key_run(){
 				case 0xFE:
 					printf("left\n");
 					return 2;
-				case 0xFD:
-					printf("up\n");
-					return 3;
-				case 0xFB:
-					printf("dowm\n");
-					return 4;	
 				case 0xF7:
 					printf("right\n");
+					return 3;
+				case 0xFD:
+					printf("up\n");
+					return 4;
+				case 0xFB:
+					printf("down\n");
 					return 5;
 				default :
 					printf("unknow\n");
@@ -75,19 +77,31 @@ void key_end(){
 	bcm2835_close();
 }
 
-int checkControl(int menu){
+int checkControl(int menu, int view){
 	int key = key_run();
 	if(key == 1){
 		SELECTED_VIEW = 1;
 	}
-	else if(key == 2){
+	else if(key == 2){		// left
 		menu = (menu+2) % 3;
 		printf("%d ~~~", menu);
 	}	
-	else if(key == 5){
+	else if(key == 3){		// right
 		menu = (menu+1) % 3;
 		printf("%d ~~~", menu);
-	}	
+	}
+	else if(key == 3){		// up
+		if(view != 0)
+			return UP;
+		else
+			return menu;
+	}
+	else if(key == 4){		// down
+		if(view != 0)
+			return DOWN;
+		else
+			return menu;
+	}
 	return menu;
 }
 
