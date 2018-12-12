@@ -34,13 +34,12 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	printf("%d~~\n", view);
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;
-
-	SSD1306_bitmap(0, 2, Singal816, 16, 8); 
-	SSD1306_bitmap(24, 2,Bluetooth88, 8, 8); 
-	SSD1306_bitmap(40, 2, Msg816, 16, 8); 
-	SSD1306_bitmap(64, 2, GPRS88, 8, 8); 
-	SSD1306_bitmap(90, 2, Alarm88, 8, 8); 
-	SSD1306_bitmap(112, 2, Bat816, 16, 8); 
+	char* min = malloc(40 * sizeof(char));
+	char* max = malloc(40 * sizeof(char));
+	sprintf(min, "%s%d", "min : ", minValue);
+	sprintf(max, "%s%d", "max : ", maxValue);
+	SSD1306_string(0, 2, min, 12, 1);
+	SSD1306_string(50, 2, max, 12, 1);
 	
 	if(view == 0){
 		SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
@@ -62,9 +61,9 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		else if(menu == DOWN) minValue--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Min Value");
-		SSD1306_string(0, 16, Description, 12, 1);
-		char* min = malloc(40 * sizeof(char));
 		sprintf(min, "%d%s", minValue, selectedValue);
+		SSD1306_string(0, 16, Description, 12, 1);
+		
 		displayValue(min, 12);
 	}
 	
