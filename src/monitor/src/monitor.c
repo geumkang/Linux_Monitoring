@@ -29,7 +29,7 @@ int oled_init(){
 	bcm2835_delay(2000);
 	SSD1306_clear();
 }
-void oled_run(sensor_data* data, int menu, int view){
+void oled_run(sensor_data** data, int menu, int view){
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
 	if(view != 0)
