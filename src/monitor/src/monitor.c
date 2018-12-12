@@ -27,7 +27,7 @@ int oled_init(){
 	SSD1306_clear();
 }
 
-void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int* view){
+void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	printf("%d~~\n", view);
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;

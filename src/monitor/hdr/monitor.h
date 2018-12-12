@@ -5,6 +5,6 @@
 
 void monitor(sensor_data **data, int len);
 int oled_init();
-void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int* view);
+void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view);
 void oled_end();
 #endif
