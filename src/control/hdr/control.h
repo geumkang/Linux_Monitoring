@@ -1,7 +1,7 @@
 #ifndef __CONTROL_H__
 #define __CONTROL_H__
 
-static int DISPLAY = 0;
+int DISPLAY = 0;
 
 int key_init();
 int key_run();
