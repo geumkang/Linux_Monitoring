@@ -59,17 +59,16 @@ int main(){
 		printf("%d\n", menu);
 		/* Monitor */
 		monitor(data, nData);
-		char* currentValue = malloc(40 * sizeof(char));
-		
-		if(*view != 0){
-			sprintf(currentValue, "%s", data[currentUnit]->unit);
-		}
-		else{
-			sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
-			currentUnit = menu;
-		}
+
+		if(menu > 3) currentUnit = menu;
+		// if(*view != 0){
+		// 	sprintf(currentValue, "%s", data[currentUnit]->unit);
+		// }
+		// else{
+		// 	sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
+		// 	currentUnit = menu;
+		// }
 		oled_run(*data, menu, *view);
-		//oled_run(data[0]->name, data[1]->name, data[2]->name, currentValue, menu, *view);
 		fprintf(stdout, "\n");  
 		menu = currentUnit;
 

@@ -32,7 +32,11 @@ int oled_init(){
 void oled_run(sensor_data* data, int menu, int view){
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
-	sprintf(selectedValue, "%.2f %s", data[menu].value, data[menu].unit);
+	if(*view != 0){
+		sprintf(selectedValue, "%s", data[menu].unit);
+	else{
+		sprintf(selectedValue, "%.2f %s", data[menu].value, data[menu].unit);
+	}
 	
 	printf("%s\n", data[0].unit);
 	printf("%s%d~~\n", "view : ", view);
@@ -46,9 +50,9 @@ void oled_run(sensor_data* data, int menu, int view){
 	SSD1306_string(60, 2, max, 12, 1);
 	
 	if(view == 0){
-		// SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
-		// SSD1306_string(46, 52, press, 12, selectedMenu[1]); 
-		// SSD1306_string(98, 52, alti, 12, selectedMenu[2]);
+		SSD1306_string(0, 52, data[0].name, 12, selectedMenu[0]); 
+		SSD1306_string(46, 52, data[1].name, 12, selectedMenu[1]); 
+		SSD1306_string(98, 52, data[2].name, 12, selectedMenu[2]);
 		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
