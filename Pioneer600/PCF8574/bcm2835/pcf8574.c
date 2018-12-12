@@ -31,6 +31,7 @@ int main(int argc, char **argv)
     {  
 		i2c_writeByte(0x0F | i2c_readByte());
 		value = i2c_readByte() | 0xF0;
+		printf("%c\n", value);
 		if(value != 0xFF)
 		{
 			led_on;

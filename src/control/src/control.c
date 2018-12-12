@@ -19,7 +19,7 @@ int key_run(){
 	char value;
 	i2c_writeByte(0x0F | i2c_readByte());
 	value = i2c_readByte() | 0xF0;
-	printf("%s\n", value);
+	printf("%c\n", value);
 	if(bcm2835_gpio_lev(PRESSKEY) == 0)
 	{  
 		printf ("KEY PRESS\n") ;
