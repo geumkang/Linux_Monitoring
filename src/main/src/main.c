@@ -36,10 +36,12 @@ int main(){
 
 	while(1){
 		/* Sensing */
+		printf("113131\n");
 #ifdef SENSOR_BMP180
 		sensor_data_set(data[0], "temp", SENSOR_DATA_TYPE_DOUBLE, read_temperature(), "C");
 		sensor_data_set(data[1], "press", SENSOR_DATA_TYPE_DOUBLE, read_pressure()/100.0, "Pa");
 		sensor_data_set(data[2], "alti", SENSOR_DATA_TYPE_DOUBLE, read_altitude(), "h");
+		printf("113131\n");
 #endif
 #ifdef SENSOR_ADS1256
 		while((ADS1256_Scan() == 0));
@@ -73,10 +75,11 @@ int main(){
 			fprintf(stderr, "File is not written.\n");
 			return 1;
 		}
-
+		printf("113131\n");
 		/* Timer */
 		bsp_DelayUS(100000);
 		bcm2835_delay(500);
+		printf("113131\n");
 	}
 
 	/* Clean-up */
