@@ -10,6 +10,7 @@ void i2c_writeByte(char byte)
 	char buf[] = {byte};
 	bcm2835_i2c_write(buf,1);
 }
+
 char i2c_readByte()
 {
 	char buf[1];
