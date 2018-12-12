@@ -34,7 +34,7 @@ void oled_run(sensor_data* data, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
 	sprintf(selectedValue, "%.2f %s", data[menu]->value, data[menu]->unit);
 	
-	printf("%s\n", data[0]->unit);
+	printf("%s\n", data[0].unit);
 	printf("%s%d~~\n", "view : ", view);
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;
