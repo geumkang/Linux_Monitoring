@@ -76,22 +76,22 @@ void key_end(){
 }
 
 void checkControl(int *menu, int *key){
-	key = key_run();
-	if(key == 1){
+	*key = *key_run();
+	if(*key == 1){
 		SELECTED_VIEW = (SELECTED_VIEW+1) % 3;
 	}
-	else if(key == 2){		// left
-		menu = (menu+2) % 3;
-		printf("%d ~~~", menu);
+	else if(*key == 2){		// left
+		*menu = (*menu+2) % 3;
+		printf("%d ~~~", *menu);
 	}	
-	else if(key == 3){		// right
-		menu = (menu+1) % 3;
-		printf("%d ~~~", menu);
+	else if(*key == 3){		// right
+		*menu = (*menu+1) % 3;
+		printf("%d ~~~", *menu);
 	}
-	else if(key == 4){		// up
+	else if(*key == 4){		// up
 		
 	}
-	else if(key == 5){		// down
+	else if(*key == 5){		// down
 		
 	}
 }
