@@ -99,14 +99,15 @@ void checkControl(int *menu, int *key){
 }
 
 void noticeWarning(int notice){
-	if(notice == 1){
-		bcm2835_i2c_setSlaveAddress(0x20);  
-	    bcm2835_i2c_set_baudrate(10000);  
-		bcm2835_delay(100);
+	bcm2835_i2c_setSlaveAddress(0x20);  
+    bcm2835_i2c_set_baudrate(10000);  
+	bcm2835_delay(100);
+	if(notice == 1)
 		led_on;
-		bcm2835_i2c_setSlaveAddress(0x77);  
-    	bcm2835_i2c_set_baudrate(10000);
-	}
+	else
+		led_off;
+	bcm2835_i2c_setSlaveAddress(0x77);  
+	bcm2835_i2c_set_baudrate(10000);
 }
 
 int* getView(){
