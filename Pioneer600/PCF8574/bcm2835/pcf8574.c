@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 		value = i2c_readByte() | 0xF0;
 		if(value != 0xFF)
 		{
-			beep_on;
 			led_on;
 			switch(value)
 			{	
@@ -54,7 +53,6 @@ int main(int argc, char **argv)
 				value = i2c_readByte() | 0xF0;
 				bcm2835_delay(10);
 			}
-			beep_off;
 			led_off;
 		}
 		bcm2835_delay(10);	
