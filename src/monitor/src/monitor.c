@@ -121,20 +121,20 @@ void displayValue(char* selectedValue, int addY){
 			pos += 16;
 		}		
 	}
-}
+// }
 
-int* getMinValue(){
-	return &minValue;
-}
+// int* getMinValue(){
+// 	return &minValue;
+// }
 
-int* getMaxValue(){
-	return &maxValue;
-}
+// int* getMaxValue(){
+// 	return &maxValue;
+// }
 
-void setMinValue(int val){
-	minValue = val;
-}
+// void setMinValue(int val, int menu){
+// 	minValue[menu] = val;
+// }
 
-void setMaxValue(int val){
-	maxValue = val;
-}
+// void setMaxValue(int val, int menu){
+// 	maxValue[menu] = val;
+// }
