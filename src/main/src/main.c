@@ -16,7 +16,9 @@ int main(){
 	int *view = NULL;
 	int i = 0;
 	int result = 0;
-	int menu = 0, key = 0, currentUnit = 0;
+	int* menu = 0;
+	int* key = 0;
+	int currentUnit = 0;
 	oled_init();
 	key_init();
 	view = getView();
