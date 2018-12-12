@@ -121,7 +121,7 @@ void displayValue(char* selectedValue, int addY){
 			pos += 16;
 		}		
 	}
-// }
+}
 
 // int* getMinValue(){
 // 	return &minValue;
