@@ -47,7 +47,7 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	sprintf(min, "%s%d", "Min : ", minValue[menu]);
 	sprintf(max, "%s%d", "Max : ", maxValue[menu]);
 	SSD1306_string(0, 2, min, 12, 1);
-	SSD1306_string(60, 2, max, 12, 1);
+	SSD1306_string(65, 2, max, 12, 1);
 	
 	if(view == 0){
 		SSD1306_string(0, 52, data[0]->name, 12, selectedMenu[0]); 
@@ -56,7 +56,6 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
-		printf("%s %d\n", "버튼 : ", key);
 		if(minValue[menu] == 0){
 			if(menu == 0)
 				minValue[menu] = 35;
@@ -75,7 +74,6 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(min, 12);
 	}
 	else if(view == 2){
-		printf("%s %d\n", "버튼 : ", menu);
 		if(maxValue[menu] == 0){
 			if(menu == 0)
 				maxValue[menu] = minValue[menu] + 1;

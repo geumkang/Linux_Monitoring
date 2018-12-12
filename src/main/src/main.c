@@ -54,25 +54,14 @@ int main(){
 			sensor_data_set(data[i], "???", SENSOR_DATA_TYPE_DOUBLE, ADS1256_GetAdc(i) /1670.0, "mV");
 		}
 #endif
-		printf("%d\n", *view);
-		
 		/* Control */
 		checkControl(&menu, &key);
-		printf("%d\n", menu);
+		
 		/* Monitor */
 		monitor(data, nData);
-
-		// if(*view != 0){
-		// 	sprintf(currentValue, "%s", data[currentUnit]->unit);
-		// }
-		// else{
-		// 	sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
-		// 	currentUnit = menu;
-		// }
 		oled_run(data, menu, key, *view);
 		fprintf(stdout, "\n");  
 		
-
 		/* Logging */
 		result = logging("data/data_corpus.dat", data, nData);
 		if(result) {
