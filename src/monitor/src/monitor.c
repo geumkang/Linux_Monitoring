@@ -9,8 +9,8 @@
 #define DOWN 5
 
 char value[10]={'0','1','2','3','4','5','6','7','8','9'};
-int minValue = 0;
-int maxValue = 0;
+int minValue[3] = {0,0,0};
+int maxValue[3] = {0,0,0};
 
 void monitor(sensor_data **data, int len){
 	int i = 0;
@@ -44,8 +44,8 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	selectedMenu[menu] = 0;
 	char* min = malloc(40 * sizeof(char));
 	char* max = malloc(40 * sizeof(char));
-	sprintf(min, "%s%d", "Min : ", minValue);
-	sprintf(max, "%s%d", "Max : ", maxValue);
+	sprintf(min, "%s%d", "Min : ", minValue[menu]);
+	sprintf(max, "%s%d", "Max : ", maxValue[menu]);
 	SSD1306_string(0, 2, min, 12, 1);
 	SSD1306_string(60, 2, max, 12, 1);
 	
@@ -57,38 +57,38 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	}
 	else if(view == 1){
 		printf("%s %d\n", "버튼 : ", key);
-		if(minValue == 0){
+		if(minValue[menu] == 0){
 			if(menu == 0)
-				minValue = 35;
+				minValue[menu] = 35;
 			else if(menu == 1)
-				minValue = 1016;
+				minValue[menu] = 1016;
 			else if(menu == 2)
-				minValue = 15;
+				minValue[menu] = 15;
 		}
-		if(key == UP) minValue++;
-		else if(key == DOWN) minValue--;
+		if(key == UP) minValue[menu]++;
+		else if(key == DOWN) minValue[menu]--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Min Value");
-		sprintf(min, "%d%s", minValue, selectedValue);
+		sprintf(min, "%d%s", minValue[menu], selectedValue);
 		SSD1306_string(0, 16, Description, 12, 1);
 		
 		displayValue(min, 12);
 	}
 	else if(view == 2){
 		printf("%s %d\n", "버튼 : ", menu);
-		if(maxValue == 0){
+		if(maxValue[menu] == 0){
 			if(menu == 0)
-				maxValue = minValue + 1;
+				maxValue[menu] = minValue[menu] + 1;
 			else if(menu == 1)
-				maxValue = minValue + 1;
+				maxValue[menu] = minValue[menu] + 1;
 			else if(menu == 2)
-				maxValue = minValue + 1;
+				maxValue[menu] = minValue[menu] + 1;
 		}
-		if(key == UP) maxValue++;
-		else if(key == DOWN && maxValue >= minValue + 1) maxValue--;
+		if(key == UP) maxValue[menu]++;
+		else if(key == DOWN && maxValue[menu] >= minValue[menu] + 1) maxValue[menu]--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Max Value");
-		sprintf(max, "%d%s", maxValue, selectedValue);
+		sprintf(max, "%d%s", maxValue[menu], selectedValue);
 		SSD1306_string(0, 16, Description, 12, 1);
 		
 		displayValue(max, 12);

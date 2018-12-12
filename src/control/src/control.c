@@ -81,12 +81,12 @@ void checkControl(int *menu, int *key){
 		SELECTED_VIEW = (SELECTED_VIEW+1) % 3;
 	}
 	else if(*key == 2){		// left
-		*menu = (*menu+2) % 3;
-		printf("%d ~~~", *menu);
+		if(SELECTED_VIEW == 0)
+			*menu = (*menu+2) % 3;
 	}	
 	else if(*key == 3){		// right
-		*menu = (*menu+1) % 3;
-		printf("%d ~~~", *menu);
+		if(SELECTED_VIEW == 0)
+			*menu = (*menu+1) % 3;
 	}
 	else if(*key == 4){		// up
 		
