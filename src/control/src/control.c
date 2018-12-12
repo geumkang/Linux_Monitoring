@@ -67,7 +67,7 @@ int key_run(){
 		// 	value = i2c_readByte() | 0xF0;
 		// 	bcm2835_delay(10);
 		// }
-		bcm2835_i2c_end();  
+		//bcm2835_i2c_end();  
 	}
 	return 0;
 }
