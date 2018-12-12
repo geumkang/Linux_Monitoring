@@ -69,7 +69,7 @@ int main(){
 		// 	sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
 		// 	currentUnit = menu;
 		// }
-		oled_run(data, menu, *view);
+		oled_run(data, menu, key, *view);
 		fprintf(stdout, "\n");  
 		
 

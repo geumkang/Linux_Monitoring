@@ -29,7 +29,7 @@ int oled_init(){
 	bcm2835_delay(2000);
 	SSD1306_clear();
 }
-void oled_run(sensor_data** data, int menu, int view){
+void oled_run(sensor_data** data, int menu, int key, int view){
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
 	char* selectedValue = malloc(40 * sizeof(char));
 	if(view != 0)
@@ -56,17 +56,17 @@ void oled_run(sensor_data** data, int menu, int view){
 		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
-		printf("%s %d\n", "버튼 : ", menu);
+		printf("%s %d\n", "버튼 : ", key);
 		if(minValue == 0){
-			if(menu == 0)
+			if(key == 0)
 				minValue = 35;
-			else if(menu == 1)
+			else if(key == 1)
 				minValue = 1016;
-			else if(menu == 2)
+			else if(key == 2)
 				minValue = 15;
 		}
-		if(menu == UP) minValue++;
-		else if(menu == DOWN) minValue--;
+		if(key == UP) minValue++;
+		else if(key == DOWN) minValue--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Min Value");
 		sprintf(min, "%d%s", minValue, selectedValue);
@@ -75,17 +75,17 @@ void oled_run(sensor_data** data, int menu, int view){
 		displayValue(min, 12);
 	}
 	else if(view == 2){
-		printf("%s %d\n", "버튼 : ", menu);
+		printf("%s %d\n", "버튼 : ", key);
 		if(maxValue == 0){
-			if(menu == 0)
+			if(key == 0)
 				maxValue = minValue + 1;
-			else if(menu == 1)
+			else if(key == 1)
 				maxValue = minValue + 1;
-			else if(menu == 2)
+			else if(key == 2)
 				maxValue = minValue + 1;
 		}
-		if(menu == UP) maxValue++;
-		else if(menu == DOWN && maxValue >= minValue + 1) maxValue--;
+		if(key == UP) maxValue++;
+		else if(key == DOWN && maxValue >= minValue + 1) maxValue--;
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Max Value");
 		sprintf(max, "%d%s", maxValue, selectedValue);
