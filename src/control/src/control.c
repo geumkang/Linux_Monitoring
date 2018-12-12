@@ -33,15 +33,16 @@ int key_run(){
 	// i2c_writeByte(0x0F | i2c_readByte());
 	// value = i2c_readByte() | 0xF0;
 	// printf("%c\n", i2c_readByte());
-	if(bcm2835_gpio_lev(PRESSKEY) == 0)
-	{  
-		printf ("KEY PRESS\n") ;
-		// while(bcm2835_gpio_lev(PRESSKEY) == 0)
-		// 	bcm2835_delay(10);
-		return 1;
-	}
+	// if(bcm2835_gpio_lev(PRESSKEY) == 0)
+	// {  
+	// 	printf ("KEY PRESS\n") ;
+	// 	// while(bcm2835_gpio_lev(PRESSKEY) == 0)
+	// 	// 	bcm2835_delay(10);
+	// 	return 1;
+	// }
 
-	else if(value != 0xFF)
+	// else 
+		if(value != 0xFF)
 	{
 		if (!bcm2835_init())return 1;  
 		bcm2835_i2c_begin(); 
@@ -66,6 +67,7 @@ int key_run(){
 			value = i2c_readByte() | 0xF0;
 			bcm2835_delay(10);
 		}
+		bcm2835_i2c_end();  
 	}
 	return 0;
 }
