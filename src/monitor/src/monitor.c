@@ -59,10 +59,14 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		}
 		if(menu == UP) minValue++;
 		else if(menu == DOWN) minValue--;
+		printf("2132\n");
 		char* Description = malloc(40 * sizeof(char));
 		sprintf(Description, "%s", "Min Value");
+		printf("2132\n");
 		SSD1306_string(0, 16, Description, 12, 1);
+		printf("2132\n");
 		displayValue(minValue);
+		printf("2132\n");
 	}
 	
 	SSD1306_display();
