@@ -90,13 +90,13 @@ int checkControl(int menu){
 		menu = (menu+1) % 3;
 		printf("%d ~~~", menu);
 	}
-	else if(key == 3){		// up
+	else if(key == 4){		// up
 		if(SELECTED_VIEW != 0)
 			return UP;
 		else
 			return menu;
 	}
-	else if(key == 4){		// down
+	else if(key == 5){		// down
 		if(SELECTED_VIEW != 0)
 			return DOWN;
 		else
