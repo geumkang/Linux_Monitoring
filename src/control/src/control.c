@@ -35,8 +35,6 @@ int key_run(){
 	if(bcm2835_gpio_lev(PRESSKEY) == 0)
 	{  
 		printf ("KEY PRESS\n") ;
-		// while(bcm2835_gpio_lev(PRESSKEY) == 0)
-		// 	bcm2835_delay(10);
 		return 1;
 	}
 	else {
@@ -50,21 +48,19 @@ int key_run(){
 			switch(value)
 			{	
 				case 0xFE:
-					printf("left\n");break;	
+					printf("left\n");
+					return 2;
 				case 0xFD:
-					printf("up\n");	break;
+					printf("up\n");
+					return 3;
 				case 0xFB:
-					printf("dowm\n");break;	
+					printf("dowm\n");
+					return 4;	
 				case 0xF7:
-					printf("right\n");break;
+					printf("right\n");
+					return 5;
 				default :
 					printf("unknow\n");
-			}
-			while(value != 0xFF)
-			{
-				i2c_writeByte(0x0F | i2c_readByte());
-				value = i2c_readByte() | 0xF0;
-				bcm2835_delay(10);
 			}
 		}
 		bcm2835_i2c_setSlaveAddress(0x77);  
@@ -76,4 +72,12 @@ int key_run(){
 
 void key_end(){
 	bcm2835_close();
+}
+
+int checkControl(int menu){
+	if(key_run() == 5){
+		menu = (menu+1) % 3;
+		printf("%d ~~~", menu);
+	}	
+	return menu;
 }

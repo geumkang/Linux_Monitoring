@@ -4,6 +4,7 @@
 int key_init();
 int key_run();
 void key_end();
+void checkControl(int menu);
 
 void i2c_writeByte(char byte);
 char i2c_readByte();
