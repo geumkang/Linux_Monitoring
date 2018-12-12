@@ -9,6 +9,8 @@
 #include <control.h>
 #include <string.h>
 
+#define UP 100
+#define DOWN 200
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
 
@@ -61,7 +63,7 @@ int main(){
 		monitor(data, nData);
 		char* currentValue = malloc(40 * sizeof(char));
 		
-		if(menu == UP || menu == DOWN){
+		if(*view != 0 && (menu == UP || menu == DOWN){
 			sprintf(currentValue, "%s", data[currentUnit]->unit);
 		else{
 			sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
