@@ -126,7 +126,7 @@ int checkValue(sensor_data** data, int view){
 	if(view == 0){
 		for(int i = 0; i < 3; i++){
 			if(minValue[i] != 0){
-				if(data[i]->value < minValue[i] || data[i]->value > maxValue[i]){
+				if(data[i]->value < minValue[i] && data[i]->value > maxValue[i]){
 					return 1;	
 				}
 			}
