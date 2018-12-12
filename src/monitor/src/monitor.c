@@ -4,7 +4,7 @@
 #include "SSD1306.h"
 #include <bcm2835.h>
 #include <string.h>
-
+#include <sensor_data.h>
 #define UP 100
 #define DOWN 200
 
@@ -29,9 +29,10 @@ int oled_init(){
 	bcm2835_delay(2000);
 	SSD1306_clear();
 }
-
-void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
-	printf("%d~~\n", view);
+void oled_run(sensor_data* data, int menu, int view){
+//void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view){
+	printf("%s\n", data[0]->unit);
+	printf("%s%d~~\n", "view : ", view);
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;
 	char* min = malloc(40 * sizeof(char));
