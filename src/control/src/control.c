@@ -42,7 +42,7 @@ int key_run(){
 	// }
 
 	// else 
-		if(value != 0xFF)
+	if(value != 0xFF)
 	{
 		if (!bcm2835_init())return 1;  
 		bcm2835_i2c_begin(); 
@@ -67,7 +67,9 @@ int key_run(){
 		// 	value = i2c_readByte() | 0xF0;
 		// 	bcm2835_delay(10);
 		// }
-		//bcm2835_i2c_end();  
+		printf("13\n");
+		bcm2835_i2c_end();  
+		printf("1414\n");
 	}
 	return 0;
 }
