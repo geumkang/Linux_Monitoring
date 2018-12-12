@@ -63,11 +63,10 @@ int key_run(){
 					printf("unknow\n");
 			}
 		}
-		bcm2835_i2c_setSlaveAddress(0x77);  
-    	bcm2835_i2c_set_baudrate(10000);  		
-    	bcm2835_delay(100);
 	}
-	
+	bcm2835_i2c_setSlaveAddress(0x77);  
+    bcm2835_i2c_set_baudrate(10000);
+    
 	return 0;
 }
 
