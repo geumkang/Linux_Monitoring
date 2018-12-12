@@ -52,6 +52,10 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	SSD1306_string(65, 2, max, 12, 1);
 	
 	if(view == 0){
+		if(key == DOWN){
+			minValue[menu] = 0;
+			maxValue[menu] = 0;
+		}
 		SSD1306_string(0, 52, data[0]->name, 12, selectedMenu[0]); 
 		SSD1306_string(46, 52, data[1]->name, 12, selectedMenu[1]); 
 		SSD1306_string(98, 52, data[2]->name, 12, selectedMenu[2]);
