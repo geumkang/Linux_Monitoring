@@ -14,13 +14,13 @@
 
 int main(){
 	int *view = NULL;
-	view = malloc(sizeof(int*) * 10);
+	view = malloc(sizeof(int) * 10);
 	int i = 0;
 	int result = 0;
 	int menu = 0;
 	oled_init();
 	key_init();
-	getView(*view);
+	getView(view);
 	/* Data Storage Preparation */
 	int nData = 3;
 	sensor_data **data = NULL;
