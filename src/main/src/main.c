@@ -13,7 +13,7 @@
 //#define SENSOR_ADS1256
 
 int main(){
-	int *view = null;
+	int *view = NULL;
 	int i = 0;
 	int result = 0;
 	int menu = 0;
