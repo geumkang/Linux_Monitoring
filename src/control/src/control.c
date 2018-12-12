@@ -5,6 +5,7 @@
 #define led_off   i2c_writeByte(0x10 | i2c_readByte())
 #define led_on  i2c_writeByte(0xEF & i2c_readByte())
 
+int SELECTED_VIEW = 0;
 char PRESSKEY = 20;
 unsigned char i;
 
