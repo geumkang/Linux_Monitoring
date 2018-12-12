@@ -55,7 +55,7 @@ int main(){
 		printf("%d\n", *view);
 		
 		/* Control */
-		menu = checkControl(menu, *view);
+		menu = checkControl(menu);
 		
 		/* Monitor */
 		monitor(data, nData);
