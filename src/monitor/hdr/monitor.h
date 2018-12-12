@@ -10,4 +10,6 @@ void oled_end();
 void displayValue(char* selectedValue, int addY);
 int* getMinValue();
 int* getMaxValue();
+void setMinValue(int val);
+void setMaxValue(int val);
 #endif

@@ -36,10 +36,10 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 	selectedMenu[menu] = 0;
 	char* min = malloc(40 * sizeof(char));
 	char* max = malloc(40 * sizeof(char));
-	sprintf(min, "%s%d", "min : ", minValue);
-	sprintf(max, "%s%d", "max : ", maxValue);
+	sprintf(min, "%s%d", "Min : ", minValue);
+	sprintf(max, "%s%d", "Max : ", maxValue);
 	SSD1306_string(0, 2, min, 12, 1);
-	SSD1306_string(50, 2, max, 12, 1);
+	SSD1306_string(60, 2, max, 12, 1);
 	
 	if(view == 0){
 		SSD1306_string(0, 52, temp, 12, selectedMenu[0]); 
@@ -65,6 +65,25 @@ void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu
 		SSD1306_string(0, 16, Description, 12, 1);
 		
 		displayValue(min, 12);
+	}
+	else if(view == 2){
+		printf("%s %d\n", "버튼 : ", menu);
+		if(maxValue == 0){
+			if(menu == 0)
+				maxValue = 35;
+			else if(menu == 1)
+				maxValue = 1016;
+			else if(menu == 2)
+				maxValue = 15;
+		}
+		if(menu == UP) maxValue++;
+		else if(menu == DOWN) maxValue--;
+		char* Description = malloc(40 * sizeof(char));
+		sprintf(Description, "%s", "Max Value");
+		sprintf(max, "%d%s", maxValue, selectedValue);
+		SSD1306_string(0, 16, Description, 12, 1);
+		
+		displayValue(max, 12);
 	}
 	
 	SSD1306_display();
@@ -102,4 +121,12 @@ int* getMinValue(){
 
 int* getMaxValue(){
 	return &maxValue;
+}
+
+void setMinValue(int val){
+	minValue = val;
+}
+
+void setMaxValue(int val){
+	maxValue = val;
 }
