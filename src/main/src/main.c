@@ -63,7 +63,6 @@ int main(){
 		
 		if(*view != 0 && (menu == UP || menu == DOWN)){
 			sprintf(currentValue, "%s", data[currentUnit]->unit);
-			menu = currentUnit;
 		}
 		else{
 			sprintf(currentValue, "%.2f %s", data[menu]->value, data[menu]->unit);
@@ -71,6 +70,7 @@ int main(){
 		}
 		oled_run(data[0]->name, data[1]->name, data[2]->name, currentValue, menu, *view);
 		fprintf(stdout, "\n");  
+		menu = currentUnit;
 
 		/* Logging */
 		result = logging("data/data_corpus.dat", data, nData);
