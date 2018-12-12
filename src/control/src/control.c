@@ -43,8 +43,12 @@ int key_run(){
 		// 	bcm2835_delay(10);
 		return 1;
 	}
+	bcm2835_i2c_begin(); 
+		bcm2835_i2c_setSlaveAddress(0x20);  
+	    bcm2835_i2c_set_baudrate(10000);  
 	while(1)  
     {  
+
 		i2c_writeByte(0x0F | i2c_readByte());
 		value = i2c_readByte() | 0xF0;
 		printf("%c\n", value);
@@ -74,7 +78,7 @@ int key_run(){
 		}
 		bcm2835_delay(10);	
 	}    
-	
+
 	// else if(value != 0xFF)
 	// {
 	// 	led_on;
