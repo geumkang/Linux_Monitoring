@@ -98,8 +98,8 @@ void checkControl(int *menu, int *key){
 	}
 }
 
-void noticeWarning(int beef){
-	if(beef == 1){
+void noticeWarning(int notice){
+	if(notice == 1){
 		bcm2835_i2c_setSlaveAddress(0x20);  
 	    bcm2835_i2c_set_baudrate(10000);  
 		bcm2835_delay(100);

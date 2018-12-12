@@ -54,7 +54,7 @@ int main(){
 #endif
 		/* Control */
 		checkControl(&menu, &key);
-		
+
 		/* Monitor */
 		monitor(data, nData);
 		oled_run(data, menu, key, *view);
@@ -62,6 +62,7 @@ int main(){
 		
 		/* Check */
 		notice = checkValue(data, *view);
+		noticeWarning(notice);
 
 		/* Timer */
 		bsp_DelayUS(100000);
