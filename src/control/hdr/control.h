@@ -1,6 +1,9 @@
 #ifndef __CONTROL_H__
 #define __CONTROL_H__
 
+#define UP 100
+#define DOWN 200
+
 int key_init();
 int key_run();
 void key_end();

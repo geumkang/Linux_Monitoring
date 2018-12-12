@@ -9,8 +9,6 @@
 #include <control.h>
 #include <string.h>
 
-#define UP 100
-#define DOWN 200
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
 
