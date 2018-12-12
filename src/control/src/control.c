@@ -33,9 +33,9 @@ int key_init(){
 
 int key_run(){
 	char value;
-	i2c_writeByte(0x0F | i2c_readByte());
-	value = i2c_readByte() | 0xF0;
-	printf("%c\n", i2c_readByte());
+	// i2c_writeByte(0x0F | i2c_readByte());
+	// value = i2c_readByte() | 0xF0;
+	// printf("%c\n", i2c_readByte());
 	if(bcm2835_gpio_lev(PRESSKEY) == 0)
 	{  
 		printf ("KEY PRESS\n") ;
@@ -43,30 +43,62 @@ int key_run(){
 		// 	bcm2835_delay(10);
 		return 1;
 	}
-	else if(value != 0xFF)
-	{
-		led_on;
-		switch(value)
-		{	
-			case 0xFE:
-				printf("left\n");break;	
-			case 0xFD:
-				printf("up\n");	break;
-			case 0xFB:
-				printf("dowm\n");break;	
-			case 0xF7:
-				printf("right\n");break;
-			default :
-				printf("unknow\n");
+	while(1)  
+    {  
+		i2c_writeByte(0x0F | i2c_readByte());
+		value = i2c_readByte() | 0xF0;
+		printf("%c\n", value);
+		if(value != 0xFF)
+		{
+			led_on;
+			switch(value)
+			{	
+				case 0xFE:
+					printf("left\n");break;	
+				case 0xFD:
+					printf("up\n");	break;
+				case 0xFB:
+					printf("dowm\n");break;	
+				case 0xF7:
+					printf("right\n");break;
+				default :
+					printf("unknow\n");
+			}
+			while(value != 0xFF)
+			{
+				i2c_writeByte(0x0F | i2c_readByte());
+				value = i2c_readByte() | 0xF0;
+				bcm2835_delay(10);
+			}
+			led_off;
 		}
-		led_off;
-		// while(value != 0xFF)
-		// {
-		// 	i2c_writeByte(0x0F | i2c_readByte());
-		// 	value = i2c_readByte() | 0xF0;
-		// 	bcm2835_delay(10);
-		// }
-	}
+		bcm2835_delay(10);	
+	}    
+	
+	// else if(value != 0xFF)
+	// {
+	// 	led_on;
+	// 	switch(value)
+	// 	{	
+	// 		case 0xFE:
+	// 			printf("left\n");break;	
+	// 		case 0xFD:
+	// 			printf("up\n");	break;
+	// 		case 0xFB:
+	// 			printf("dowm\n");break;	
+	// 		case 0xF7:
+	// 			printf("right\n");break;
+	// 		default :
+	// 			printf("unknow\n");
+	// 	}
+	// 	led_off;
+	// 	// while(value != 0xFF)
+	// 	// {
+	// 	// 	i2c_writeByte(0x0F | i2c_readByte());
+	// 	// 	value = i2c_readByte() | 0xF0;
+	// 	// 	bcm2835_delay(10);
+	// 	// }
+	// }
 	return 0;
 }
 
