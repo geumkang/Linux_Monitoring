@@ -12,6 +12,8 @@
 #define SENSOR_BMP180
 //#define SENSOR_ADS1256
 
+static int DISPLAY = 0;
+
 int main(){
 	int i = 0;
 	int result = 0;

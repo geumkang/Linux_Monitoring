@@ -66,7 +66,7 @@ int key_run(){
 	}
 	bcm2835_i2c_setSlaveAddress(0x77);  
     bcm2835_i2c_set_baudrate(10000);
-    
+
 	return 0;
 }
 
@@ -75,11 +75,15 @@ void key_end(){
 }
 
 int checkControl(int menu){
-	if(key_run() == 2){
+	int key = key_run();
+	if(key == 1){
+		DISPLAY = 1;
+	}
+	else if(key == 2){
 		menu = (menu+2) % 3;
 		printf("%d ~~~", menu);
 	}	
-	else if(key_run() == 5){
+	else if(key == 5){
 		menu = (menu+1) % 3;
 		printf("%d ~~~", menu);
 	}	
