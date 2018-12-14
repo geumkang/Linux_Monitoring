@@ -66,7 +66,7 @@ int main(){
 		if(*view == 0) noticeWarning(notice);
 
 		/* Logging */
-		result = logging("data/data_corpus.dat", data, nData);
+		result = logging("data/data_corpus.dat", data, nData, notice, menu);
 		if(result) {
 			fprintf(stderr, "File is not written.\n");
 			return 1;

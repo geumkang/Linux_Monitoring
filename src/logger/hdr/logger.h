@@ -3,6 +3,6 @@
 
 #include <sensor_data.h>
 
-int logging(char *path, sensor_data **data, int len);
+int logging(char *path, sensor_data **data, int len, int notice, int menu);
 
 #endif

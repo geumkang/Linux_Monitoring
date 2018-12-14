@@ -4,18 +4,16 @@
 time_t now;
 struct tm *timenow;
 
-int logging(char *path, sensor_data **data, int len) {
-	int i;
-	FILE *file = fopen(path, "a");
-	time(&now);
-	timenow = localtime(&now);
-	fprintf(file, "%d:%d:%d ",timenow->tm_hour, timenow->tm_min, timenow->tm_sec);
-	for(i = 0 ; i < len ; i++) {
-		fprintf(file, "%.2f", data[i]->value);
-		if(i < len-1) fprintf(file, ",");
-	}
-	fprintf(file, "\n");
-	fclose(file);
-
+int logging(char *path, sensor_data **data, int len, int notice, int menu) {
+	if(notice == 1){
+		int i;
+		FILE *file = fopen(path, "a");
+		time(&now);
+		timenow = localtime(&now);
+		fprintf(file, "%d-%d-%d %d:%d:%d ",timenow->tm_year + 1900, timenow->tm_mon + 1, timenow->tm_mday, timenow->tm_hour, timenow->tm_min, timenow->tm_sec);
+		fprintf(file, "%.2f%s", data[menu]->value, data[menu]->unit);
+		fprintf(file, "\n");
+		fclose(file);
+	}	
 	return 0;
 }
