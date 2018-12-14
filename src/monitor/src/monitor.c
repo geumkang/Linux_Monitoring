@@ -12,6 +12,7 @@
 char value[10]={'0','1','2','3','4','5','6','7','8','9'};
 int minValue[3] = {0,0,0};
 int maxValue[3] = {0,0,0};
+int isRunning[3] = {0,0,0};
 
 void monitor(sensor_data **data, int len){
 	int i = 0;
@@ -56,7 +57,8 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
-		if(minValue[menu] == 0){
+		if(minValue[menu] == 0 && isRunning[menu] == 0){
+			isRunning[menu] = 1;
 			if(menu == 0)
 				minValue[menu] = (int)(data[0]->value);
 			else if(menu == 1)
@@ -74,14 +76,14 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(min, 12);
 	}
 	else if(view == 2){
-		if(maxValue[menu] == 0){
-			if(menu == 0)
-				maxValue[menu] = minValue[menu] + 1;
-			else if(menu == 1)
-				maxValue[menu] = minValue[menu] + 1;
-			else if(menu == 2)
-				maxValue[menu] = minValue[menu] + 1;
-		}
+		
+		if(menu == 0)
+			maxValue[menu] = minValue[menu] + 1;
+		else if(menu == 1)
+			maxValue[menu] = minValue[menu] + 1;
+		else if(menu == 2)
+			maxValue[menu] = minValue[menu] + 1;
+	
 		if(key == UP) maxValue[menu]++;
 		else if(key == DOWN && maxValue[menu] >= minValue[menu] + 1) maxValue[menu]--;
 		char* Description = malloc(40 * sizeof(char));
