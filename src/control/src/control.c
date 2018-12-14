@@ -104,8 +104,10 @@ void noticeWarning(int notice){
 	bcm2835_delay(100);
 	if(notice == 1)
 		led_on;
+		beef_on;
 	else
 		led_off;
+		beef_off;
 	bcm2835_i2c_setSlaveAddress(0x77);  
 	bcm2835_i2c_set_baudrate(10000);
 }
