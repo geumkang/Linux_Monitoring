@@ -42,6 +42,10 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 	
 	int selectedMenu[3] = {1,1,1};
 	selectedMenu[menu] = 0;
+	char* min = malloc(40 * sizeof(char));
+	char* max = malloc(40 * sizeof(char));
+	sprintf(min, "%s%d", "Min : ", minValue[menu]);
+	sprintf(max, "%s%d", "Max : ", maxValue[menu]);
 		
 	if(view == 0){
 		if(key == DOWN){
@@ -90,10 +94,7 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(max, 12);
 	}
 
-	char* min = malloc(40 * sizeof(char));
-	char* max = malloc(40 * sizeof(char));
-	sprintf(min, "%s%d", "Min : ", minValue[menu]);
-	sprintf(max, "%s%d", "Max : ", maxValue[menu]);
+
 	SSD1306_string(0, 2, min, 12, 1);
 	SSD1306_string(65, 2, max, 12, 1);
 
