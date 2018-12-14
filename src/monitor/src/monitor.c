@@ -57,7 +57,7 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(selectedValue, 0);
 	}
 	else if(view == 1){
-		if(minValue[menu] == 0 && isRunning[menu] == 0){
+		if(isRunning[menu] == 0){
 			isRunning[menu] = 1;
 			if(menu == 0)
 				minValue[menu] = (int)(data[0]->value);
@@ -76,14 +76,15 @@ void oled_run(sensor_data** data, int menu, int key, int view){
 		displayValue(min, 12);
 	}
 	else if(view == 2){
-		
-		if(menu == 0)
-			maxValue[menu] = minValue[menu] + 1;
-		else if(menu == 1)
-			maxValue[menu] = minValue[menu] + 1;
-		else if(menu == 2)
-			maxValue[menu] = minValue[menu] + 1;
-	
+		if(isRunning[menu] == 1){
+			isRunning[menu] = 0;
+			if(menu == 0)
+				maxValue[menu] = minValue[menu] + 1;
+			else if(menu == 1)
+				maxValue[menu] = minValue[menu] + 1;
+			else if(menu == 2)
+				maxValue[menu] = minValue[menu] + 1;
+		}
 		if(key == UP) maxValue[menu]++;
 		else if(key == DOWN && maxValue[menu] >= minValue[menu] + 1) maxValue[menu]--;
 		char* Description = malloc(40 * sizeof(char));
