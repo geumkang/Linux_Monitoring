@@ -62,7 +62,7 @@ int main(){
 		fprintf(stdout, "\n");  
 		
 		/* Check */
-		notice = checkValue(data, *view);
+		notice = checkValue(data, *view, menu);
 		if(*view == 0) noticeWarning(notice);
 
 		/* Logging */

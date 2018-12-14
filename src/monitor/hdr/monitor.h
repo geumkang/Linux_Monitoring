@@ -9,7 +9,7 @@ void oled_run(sensor_data** data, int menu, int key, int view);
 //void oled_run(char* temp, char* press, char* alti, char* selectedValue, int menu, int view);
 void oled_end();
 void displayValue(char* selectedValue, int addY);
-int checkValue(sensor_data** data, int view);
+int checkValue(sensor_data** data, int view, int menu);
 // int* getMinValue();
 // int* getMaxValue();
 // void setMinValue(int val);

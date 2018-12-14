@@ -13,6 +13,7 @@ char value[10]={'0','1','2','3','4','5','6','7','8','9'};
 int minValue[3] = {0,0,0};
 int maxValue[3] = {0,0,0};
 int isRunning[3] = {0,0,0};
+int beforeMenu = 0;
 
 void monitor(sensor_data **data, int len){
 	int i = 0;
@@ -129,13 +130,15 @@ void displayValue(char* selectedValue, int addY){
 	}
 }
 
-int checkValue(sensor_data** data, int view){
+int checkValue(sensor_data** data, int view, int menu){
 	if(view == 0){
-		for(int i = 0; i < 3; i++){
-			if(minValue[i] != 0){
-				if(data[i]->value < minValue[i] || data[i]->value > maxValue[i]){
-					return 1;	
-				}
+		if(beforeMenu != menu){
+			beforeMenu = menu;
+			return 0;
+		}
+		if(minValue[menu] != 0){
+			if(data[menu]->value < minValue[menu] || data[menu]->value > maxValue[menu]){
+				return 1;	
 			}
 		}
 	}
